@@ -8,6 +8,7 @@ import { z } from "zod";
 import { useNavigate } from "react-router-dom";
 import { url } from "./URL";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 type schima = z.infer<typeof schima>;
 const schima = z.object({
@@ -51,6 +52,15 @@ export default function LoginWeb() {
       })
       .catch((error) => {
         console.log(error);
+        if( error.response.status === 422 || error.response.status ===401 ){
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Incorrect username or password!",
+          
+          });
+          
+        }
         setLoginAttempts(loginAttempts + 1);
         if (loginAttempts >= 2) {
           navigate("/tryagain");
