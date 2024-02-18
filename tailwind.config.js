@@ -19,9 +19,10 @@ export default {
         xsm: "600px",
 
         md: "775px",
-        // => @media (min-width: 768px) { ... }
+                // => @media (min-width: 768px) { ... }
         extramd: "900px",
 
+        xxlg:'1150',
         extralg: "1072px",
         lg: "1073px",
         // => @media (min-width: 1024px) { ... }
