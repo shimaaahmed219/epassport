@@ -36,6 +36,7 @@ export default {
       },
       colors: {
         "greenAcc": "#324134",
+        "hover":"#556c58",
         "greenD": " #141D15",
         "yellowAcc": " #F6C90E",
         "bg": "#EBEBEB",

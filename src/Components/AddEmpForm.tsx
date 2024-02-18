@@ -79,7 +79,7 @@ export default function EditEmployeeForm() {
     };
 
     return (
-        <div className="w-[90%] m-auto  mt-5 min-h-[700px] pt-6 shadow-shadowEmp bg-bgEmp rounded-[20px]">
+        <div className="lg:w-[70%] w-[90%]  lg:ms-auto m-auto lg:mr-[30px]  mt-5 min-h-[700px] pt-6 shadow-shadowEmp bg-bgEmp rounded-[20px]">
             <form
                 onSubmit={handleSubmit(onsubmit)}
                 className=" flex-col flex items-center "

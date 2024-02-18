@@ -10,8 +10,9 @@ export default function EditEmployee() {
     return (
 
         <div className='min-h-screen bg-bg'>
-            <div className='flex  flex-row'>
+            <div className='flex  flex-row justify-between'>
                 <Saidebar />
+               
                 <div className='w-full h-full'>
                 <Nav />
                 <hr className='w-full h-[0.15rem] bg-greenAcc my-2'/>

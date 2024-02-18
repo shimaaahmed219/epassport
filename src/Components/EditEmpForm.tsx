@@ -116,7 +116,7 @@ export default function EditEmpForm() {
     };
 
     return (
-        <div className="w-[90%] m-auto mt-5 h-full pt-6 shadow-shadowEmp bg-bgEmp rounded-[20px]">
+        <div className="lg:w-[70%] w-[90%]  lg:ms-auto m-auto lg:mr-[30px]  mt-5 h-full pt-6 shadow-shadowEmp bg-bgEmp rounded-[20px]">
             <form
                 onSubmit={handleSubmit(onSubmitForm)}
                 className=" flex-col flex items-center"

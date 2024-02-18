@@ -20,14 +20,15 @@ export default function Saidebar() {
         { id: 2, name: ' Encrypted files', href: "/addFile", src: Encrypted },
         { id: 3, name: 'Employees', href: "/employee", src: employee },
         { id: 4, name: ' Users', href: "/", src: users },
-        { id: 5, name: ' Edit Profile', href: "/editEmployee", src: Edit },
+        { id: 5, name: ' Edit Profile', href: "/EditEmployee", src: Edit },
         { id: 6, name: ' Settings', href: "/", src: Settingsicon },
-        // { id: 7, name: 'Sign out', href: "/", src: logOuticon },
+        
     ]
 
     return (
-
-        <div className='w-[311px] min-h-screen  bg-greenAcc lg:block hidden'>
+<div className=''>
+        <div className='w-[311px] min-h-[700px] bg-greenAcc truncate lg:block hidden fixed top-0 left-0 z-50'>
+         
             <div className='flex flex-col  items-center py-6'>
             
             <div className="w-[65px] h-[67px] rounded-full userIcon flex justify-center items-center ">
@@ -35,12 +36,13 @@ export default function Saidebar() {
             </div>
             <h2 className={`font-tinos text-yellowAcc capitalize text-[24px]`}>user name</h2>
             <h6 className={`font-roboto font-light text-email  text-[20px]`}>email adrees from user</h6>
-            <div className='flex flex-col w-full mt-5 pl-5'>
+            <div className='flex flex-col w-full mt-5  '>
                 {links.map(link => (
-                    <Link
+                    <div className='hover:bg-hover px-5 hover:pl-10'>
+   <Link
                         key={link.id}
                         to={link.href}
-                        className={`font-roboto font-medium flex my-2  capitalize items-center gap-[20px] w-full h-[40px] text-white border-none text-left text-[20px] bg-greenAcc hover:bg-opacity-10`}
+                        className={`font-roboto font-medium hover:text-gray-100 flex my-2  capitalize items-center gap-[20px] w-full h-[40px] text-white border-none text-left text-[20px] bg-greenAcc hover:bg-opacity-10`}
                     >
                         <img src={link.src} alt='' width={20} height={20} />
 
@@ -48,6 +50,10 @@ export default function Saidebar() {
                         {link.name}
 
                     </Link>
+
+
+                    </div>
+                 
                 )
 
                 )}
@@ -58,6 +64,7 @@ export default function Saidebar() {
 
             </div>
 
+        </div>
         </div>
     )
 }
