@@ -27,7 +27,7 @@ export default function Saidebar() {
 
     return (
 <div className=''>
-        <div className='w-[311px] min-h-[700px] bg-greenAcc truncate lg:block hidden fixed top-0 left-0 z-50'>
+        <div className='w-[311px] min-h-[700px] bg-greenAcc overflow-y-auto truncate lg:block hidden fixed top-0 left-0 z-50'>
          
             <div className='flex flex-col  items-center py-6'>
             
@@ -42,7 +42,7 @@ export default function Saidebar() {
    <Link
                         key={link.id}
                         to={link.href}
-                        className={`font-roboto font-medium hover:text-gray-100 flex my-2  capitalize items-center gap-[20px] w-full h-[40px] text-white border-none text-left text-[20px] bg-greenAcc hover:bg-opacity-10`}
+                        className={`font-roboto font-medium hover:text-gray-100 flex my-2  capitalize items-center gap-[20px] w-full h-[40px] text-white border-none text-left text-[20px] hover:bg-opacity-10`}
                     >
                         <img src={link.src} alt='' width={20} height={20} />
 

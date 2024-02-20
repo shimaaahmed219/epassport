@@ -36,10 +36,10 @@ export default function Logout() {
 
 
     return (
-        <div className=' hover:bg-hover px-5 py-2 hover:pl-10'>
+        <div className=' px-5 py-2 hover:pl-10'>
             <Link
                 to=""
-                className={`font-roboto font-medium flex my-2capitalize   items-center gap-[20px] w-full h-[40px] text-white border-none text-left text-[20px] bg-greenAcc hover:bg-opacity-10`}
+                className={`font-roboto font-medium flex my-2capitalize   items-center gap-[20px] w-full h-[40px] text-white border-none text-left text-[20px] hover:bg-opacity-10`}
                 onClick={logout}
             >
                 <img src={logOuticon} alt='' width={20} height={20} />

@@ -42,7 +42,7 @@ export default {
         "bg": "#EBEBEB",
         "oddRow": " #F8F8F8",
         "email": " #778D86",
-        " bgEmp": " #ffffff99",
+        "bgEmp": " #ffffff99",
         'fileUploud': "#D9D9D9",
         'baform': '#ffffff99',
         'hr': '#cBcBcB',
