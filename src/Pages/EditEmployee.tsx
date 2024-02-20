@@ -11,7 +11,10 @@ export default function EditEmployee() {
 
         <div className='min-h-screen bg-bg'>
             <div className='flex  flex-row justify-between'>
-                <Saidebar />
+           
+            <div className='lg:block hidden'>
+               <Saidebar />
+                </div> 
                
                 <div className='w-full h-full'>
                 <Nav />

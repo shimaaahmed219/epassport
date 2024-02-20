@@ -3,37 +3,32 @@ import { useState } from 'react'
 import icon2 from '../assets/filters-2.svg'
 import icon from '../assets/navImg/Group (1).svg'
 import Saidebar from './Saidebar'
-import DropDowenList from './DropDowenList'
+// import DropDowenList from './DropDowenList'
 
 
 function Nav() {
 
     // show sidebar xl size
     const [showSidebar, setShowSidebar] = useState(false)
-    const [showDropDowen, setShowDropDowen] = useState(false)
+
 
 
     const toogleSidebar = () => {
         setShowSidebar(showSidebar === false ? true : false)
-    
+
     }
 
-    const toogleDropDowen = () => {
-        setShowDropDowen(showDropDowen === false ? true : false)
-    }
+
 
     return (
         // xl button size
         <div className={`bg-bg w-5/6 mt-3 m-auto flex flex-row justify-between `}>
-            <button onClick={toogleSidebar} className=' lg:block hidden'>
+            <button onClick={toogleSidebar} className=' '>
 
                 <img src={icon2} />
             </button>
-{/* small size */}
-            <button onClick={toogleDropDowen} className='  lg:hidden block'>
+            {/* small size */}
 
-                <img src={icon2} />
-            </button>
 
 
             <div className='flex row w-full'>
@@ -52,9 +47,10 @@ function Nav() {
 
             </div>
             {showSidebar === true ? <Saidebar /> : ''}
-            {showSidebar === true ? <img src={icon2} onClick={toogleSidebar} className='fixed left-[360px] lg:block hidden' /> : ''}
-      {showDropDowen === true ?<DropDowenList/>:''}
-      
+            {showSidebar === true ?
+                <img src={icon2} onClick={toogleSidebar} className='fixed left-[360px] ' /> : ''}
+
+
         </div>
 
 

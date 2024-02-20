@@ -8,7 +8,9 @@ export default function AddEmployee() {
 
         <div className='min-h-screen bg-bg '>
             <div className='flex  flex-row'>
-                <Saidebar />
+               <div className='lg:block hidden'>
+               <Saidebar />
+                </div> 
                 <div className='w-full h-full'>
                 <Nav />
                 <hr className='w-full h-[0.15rem] bg-greenAcc my-2'/>

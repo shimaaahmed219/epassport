@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { url } from "./URL";
 import { useState } from "react";
 import Swal from "sweetalert2";
-
 type schima = z.infer<typeof schima>;
 const schima = z.object({
   email: z.string().email(),

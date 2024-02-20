@@ -27,7 +27,7 @@ export default function Saidebar() {
 
     return (
 <div className=''>
-        <div className='w-[311px] min-h-[700px] bg-greenAcc overflow-y-auto truncate lg:block hidden fixed top-0 left-0 z-50'>
+        <div className='w-[311px] min-h-[700px] bg-greenAcc overflow-y-auto truncate  fixed top-0 left-0 z-50'>
          
             <div className='flex flex-col  items-center py-6'>
             
