@@ -3,16 +3,15 @@ import { useState } from 'react'
 import icon2 from '../assets/filters-2.svg'
 import icon from '../assets/navImg/Group (1).svg'
 import Saidebar from './Saidebar'
-// import DropDowenList from './DropDowenList'
+
 
 
 function Nav() {
 
-    // show sidebar xl size
+  
     const [showSidebar, setShowSidebar] = useState(false)
 
-
-
+    
     const toogleSidebar = () => {
         setShowSidebar(showSidebar === false ? true : false)
 

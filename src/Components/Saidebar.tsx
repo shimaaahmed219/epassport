@@ -22,49 +22,49 @@ export default function Saidebar() {
         { id: 4, name: ' Users', href: "/", src: users },
         { id: 5, name: ' Edit Profile', href: "/EditEmployee", src: Edit },
         { id: 6, name: ' Settings', href: "/", src: Settingsicon },
-        
+       
     ]
 
     return (
-<div className=''>
-        <div className='w-[311px] min-h-[700px] bg-greenAcc overflow-y-auto truncate  fixed top-0 left-0 z-50'>
-         
-            <div className='flex flex-col  items-center py-6'>
-            
-            <div className="w-[65px] h-[67px] rounded-full userIcon flex justify-center items-center ">
-                <img src="" alt='' />
-            </div>
-            <h2 className={`font-tinos text-yellowAcc capitalize text-[24px]`}>user name</h2>
-            <h6 className={`font-roboto font-light text-email  text-[20px]`}>email adrees from user</h6>
-            <div className='flex flex-col w-full mt-5  '>
-                {links.map(link => (
-                    <div className='hover:bg-hover px-5 hover:pl-10'>
-   <Link
-                        key={link.id}
-                        to={link.href}
-                        className={`font-roboto font-medium hover:text-gray-100 flex my-2  capitalize items-center gap-[20px] w-full h-[40px] text-white border-none text-left text-[20px] hover:bg-opacity-10`}
-                    >
-                        <img src={link.src} alt='' width={20} height={20} />
+       
+            <div className='w-[311px] h-[700px] bg-greenAcc overflow-y-auto   fixed top-0 left-0 z-50'>
 
+                <div className='flex flex-col  items-center py-6'>
 
-                        {link.name}
-
-                    </Link>
-
-
+                    <div className="w-[65px] h-[67px] rounded-full userIcon flex justify-center items-center ">
+                        <img src="" alt='' />
                     </div>
-                 
-                )
+                    <h2 className={`font-tinos text-yellowAcc capitalize text-[24px]`}>user name</h2>
+                    <h6 className={`font-roboto font-light text-email  text-[20px]`}>email adrees from user</h6>
+                    <div className='flex flex-col w-full mt-5  '>
+                        {links.map(link => (
+                            <div className='hover:bg-hover px-5 hover:pl-10'>
+                                <Link
+                                    key={link.id}
+                                    to={link.href}
+                                    className={`font-roboto font-medium hover:text-gray-100 flex my-2  capitalize items-center gap-[20px] w-full h-[40px] text-white border-none text-left text-[20px] hover:bg-opacity-10`}
+                                >
+                                    <img src={link.src} alt='' width={20} height={20} />
 
-                )}
-                <Logout/>
+
+                                    {link.name}
+
+                                </Link>
+
+
+                            </div>
+
+                        )
+
+                        )}
+                        <Logout />
+                    </div>
+
+
+
+                </div>
+
             </div>
-
-
-
-            </div>
-
-        </div>
-        </div>
+        
     )
 }

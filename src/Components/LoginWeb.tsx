@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { url } from "./URL";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { FiEye, FiEyeOff } from 'react-icons/fi'
 type schima = z.infer<typeof schima>;
 const schima = z.object({
   email: z.string().email(),
@@ -25,6 +26,9 @@ type User = {
 export default function LoginWeb() {
   const navigate = useNavigate();
   const [loginAttempts, setLoginAttempts] = useState(0);
+  const [showPassword,setShowPassword]= useState(false)
+
+
   const {
     register,
     handleSubmit,
@@ -129,10 +133,16 @@ export default function LoginWeb() {
               )}
               <input
                 {...register("password")}
-                type="password"
+              type={showPassword ? 'text' : 'password'}
                 placeholder="password"
                 className="block focus:outline-none shadow-form placeholder:text-2xl rounded-input m-auto lg:w-[429px] md:w-[350px] sm:w-[280px] w-[240px] px-5 py-[20px] mb-10"
               />
+             <span
+                onClick={() => setShowPassword(!showPassword)} 
+                className="absolute lg:top-[65%] xl:right-[129px] top-[59%] lg:right-[90px] md:right-[50px] sm-[30px]    transform -translate-y-1/2 cursor-pointer"
+              >
+                 {showPassword ? <FiEyeOff size={20} color="yellow" /> : <FiEye size={20} color="yellow" />}
+                </span>
               {errors.password && (
                 <div className="text-red-500 mt-[-20px] mb-[20px]">{`**${errors.password.message}`}</div>
               )}
