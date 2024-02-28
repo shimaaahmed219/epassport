@@ -17,6 +17,7 @@ export default function LandingPage() {
         className=" w-full bg-gradient-to-r from-landingBg to-gradiant h-[720px] "
         style={{ clipPath: "polygon(0 0, 100% 0, 100% 80%, 0 100%)" }}
       >
+        
         <NavLandingPage />
 
         <div className="flex justify-between w-5/6 m-auto my-10 ">

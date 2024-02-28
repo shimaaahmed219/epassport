@@ -11,6 +11,8 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { FiEye, FiEyeOff } from 'react-icons/fi'
 type schima = z.infer<typeof schima>;
+
+
 const schima = z.object({
   email: z.string().email(),
   password: z.string().min(8, "password must be at last 8 characters"),
