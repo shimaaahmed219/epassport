@@ -13,7 +13,7 @@ import Logout from './Logout'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { url } from './URL'
-type data={
+interface data{
 name:string,
 email:string,
 photo:string,
@@ -31,7 +31,7 @@ export default function Saidebar() {
         { id: 6, name: ' Settings', href: "/", src: Settingsicon },
     ]
 
-    const [data, setData] = useState({})
+    const [data, setData] = useState<data | undefined>(undefined)
 
     useEffect(() => {
         axios.get(`${url}/auth/myProfile`, {
@@ -52,10 +52,10 @@ export default function Saidebar() {
             <div className='flex flex-col  items-center py-6'>
 
                 <div className="w-[65px] h-[67px] rounded-full userIcon flex justify-center items-center ">
-                    {/* <img src={data.photo} alt='' /> */}
+                    <img className='w-[65px] h-[67px] rounded-full' src={`https://epassport-api.preview-ym.com/${data?.photo}`}  />
                 </div>
-                <h2 className={`font-tinos text-yellowAcc capitalize text-[24px]`}>{data.name}</h2>
-                <h6 className={`font-roboto font-light text-email  text-[20px]`}>{data.email}</h6>
+                <h2 className={`font-tinos text-yellowAcc capitalize text-[24px]`}>{data?.name}</h2>
+                <h6 className={`font-roboto font-light text-email  text-[20px]`}>{data?.email}</h6>
                 <div className='flex flex-col w-full mt-5  '>
                     {links.map(link => (
                         <div className='hover:bg-hover px-5 hover:pl-10'>

@@ -40,7 +40,7 @@ type employee = {
   status: boolean;
 };
 
-export default function EmployeeDetails() {
+export default function EmployeeDetails({search}: { search: string }) {
   const [employee, setEmployee] = useState<employee[]>([]);
   const [carrentPage, setCarrentPage] = useState(0);
 
@@ -136,7 +136,11 @@ export default function EmployeeDetails() {
         </Table>
       </TableContainer>
 
-      {visbleEmployees.map((user, index) => (
+      {visbleEmployees.filter((item)=>{
+        return search.toLowerCase()===''?item:item.name.toLowerCase().includes(search)
+      }
+
+      ).map((user, index) => (
         <div
           key={user.id}
           className="grid gap-x-16 font-roboto text-[22px] grid-cols-4  my-4 bg-white rounded-[14px] shadow-employee lg:h-[70px] items-center px-5"

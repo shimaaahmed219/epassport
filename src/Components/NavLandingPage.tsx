@@ -25,6 +25,7 @@ export default function NavLandingPage() {
       </div>
 
       <nav className='xl:block hidden'>
+        
         <ul className='flex text-greenAcc justify-between gap-x-16 font-tinos font-bold text-[24px] items-center'>
           <li><Link to="">Home</Link></li>
           <li><Link to="">About Us</Link></li>
@@ -33,10 +34,14 @@ export default function NavLandingPage() {
           <li><Link to="/login" className='font-roboto text-white bg-yellowAcc py-[10px] px-[24px] rounded-[25px] h-[48p]'>Sign in</Link></li>
         </ul>
       </nav>
-      <button onClick={toogleDropDowen} className='xl:hidden block'>
+      <div className='xl:hidden block'>
+      {/* <Link to="/login" className='font-roboto text-white bg-yellowAcc py-[10px] px-[24px] rounded-[25px] h-[48p]'>Sign in</Link> */}
+      <button onClick={toogleDropDowen} className=''>
         <img src={icon2} />
       </button>
-     {showDropDowen?<DropDowenNavv/>:''}
+      </div>
+     
+     {showDropDowen?<DropDowenNavv/> :''}
     </div>
   )
 }

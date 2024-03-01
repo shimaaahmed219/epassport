@@ -2,7 +2,7 @@
 
 export default function LandingSvg() {
   return (
-    <div className="">
+    <div className="lg:block hidden">
 <div className="">
 
 <svg className='' xmlns="http://www.w3.org/2000/svg" width="295" height="118" viewBox="0 0 295 118" fill="none">

@@ -17,12 +17,15 @@ export default function LandingPage() {
         className=" w-full bg-gradient-to-r from-landingBg to-gradiant h-[720px] "
         style={{ clipPath: "polygon(0 0, 100% 0, 100% 80%, 0 100%)" }}
       >
+      
+        <NavLandingPage  />
         
-        <NavLandingPage />
-
+       
+       
         <div className="flex justify-between w-5/6 m-auto my-10 ">
+         
           {/* title and image */}
-          <div className="w-3/6">
+          <div className="md:w-3/6 w-6/6  ">
             <h1 className="font-bold leading-[45px] font-tinos text-yellowAcc text-[40px]">
               Obtain your passport easily through our website
             </h1>
@@ -32,7 +35,7 @@ export default function LandingPage() {
             </p>
             <Link
               to=""
-              className="h-[60px] w-[255px] bg-greenAcc mt-[50px] mb-[100px] text-white font-tinos Our services flex items-center justify-center rounded-input text-[28px] py-[6px] font-bold "
+              className="h-[60px] md:w-[255px] w-[200px] bg-greenAcc mt-[50px] mb-[100px] text-white font-tinos Our services flex items-center justify-center rounded-input md:text-[28px] text-[22px] py-[6px] font-bold "
             >
               Our services
             </Link>

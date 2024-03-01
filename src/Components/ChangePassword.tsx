@@ -7,33 +7,35 @@ import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
 type schema = z.infer<typeof schema>;
-const schema = z
-  .object({
-    current_password: z
-      .string()
-      .min(8)
-      .regex(/.*[A-Z].*/, {
-        message: "Password must contain at least one uppercase letter",
-      })
-      .regex(/.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-].*/, {
-        message: "Password must contain at least one special character",
-      }),
+const schema = z.object({
+  current_password: z
+    .string()
+    .min(8)
+    .regex(/.*[A-Z].*/, {
+      message: "Password must contain at least one uppercase letter",
+    })
+    .regex(/.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-].*/, {
+      message: "Password must contain at least one special character",
+    }),
 
-    new_password: z
-      .string()
-      .min(8)
-      .regex(/.*[A-Z].*/, {
-        message: "Password must contain at least one uppercase letter",
-      })
-      .regex(/.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-].*/, {
-        message: "Password must contain at least one special character",
-      }),
-    new_password_confirmation: z.string(),
-  })
-  .refine((data) => data.new_password === data.new_password_confirmation, {
-    message: "New Password Confirmation must match New Password",
-  });
-
+  new_password: z
+    .string()
+    .min(8)
+    .regex(/.*[A-Z].*/, {
+      message: "Password must contain at least one uppercase letter",
+    })
+    .regex(/.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-].*/, {
+      message: "Password must contain at least one special character",
+    }),
+  new_password_confirmation: z.string().refine(
+    (data) => {
+      return data === undefined || data === "" || data === new_password;
+    },
+    {
+      message: "New Password Confirmation must match New Password",
+    }
+  ),
+});
 export default function ChangePassword() {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -68,26 +70,26 @@ export default function ChangePassword() {
               Current Password
             </label>
             <div className="relative">
-            <input
-              {...register("current_password")}
-              placeholder=" Enter password"
-              type={showPassword ? 'text' : 'password'}
-              className="pl-2 xl:w-[365px]   w-[90%] text-greenAcc font-semibold  md:text-[22px]   focus:outline-none h-[50px] border-2 rounded-[10px] bg-transparent border-yellowAcc"
-            />
-            <span
-              onClick={() => setShowPassword(!showPassword)}
-              className="  absolute bottom-[17px] xl:right-[1px]  xl:block hidden cursor-pointer"
-            >
-              {showPassword ? (
-                <FiEyeOff size={20} color="yellow" />
-              ) : (
-                <FiEye size={20} color="yellow" />
-              )}
-            </span>
+              <input
+                {...register("current_password")}
+                placeholder=" Enter password"
+                type={showPassword ? "text" : "password"}
+                className="pl-2 xl:w-[365px]   w-[90%] text-greenAcc font-semibold  md:text-[22px]   focus:outline-none h-[50px] border-2 rounded-[10px] bg-transparent border-yellowAcc"
+              />
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="  absolute bottom-[17px] xl:right-[1px]  xl:block hidden cursor-pointer"
+              >
+                {showPassword ? (
+                  <FiEyeOff size={20} color="yellow" />
+                ) : (
+                  <FiEye size={20} color="yellow" />
+                )}
+              </span>
             </div>
-          
+
             {errors.current_password && (
-              <div className=" text-red-500 m-auto  mt-[10px] mb-[5px]">{`**${errors.current_password.message}`}</div>
+              <div className=" text-red-500 m-auto text-[15px] mt-[10px] mb-[5px]">{`**${errors.current_password.message}`}</div>
             )}
           </div>
 
@@ -98,26 +100,26 @@ export default function ChangePassword() {
               New Password
             </label>
             <div className=" relative">
-            <input
-              {...register("new_password")}
-              placeholder="Enter password"
-              type={showPassword ? 'text' : 'password'}
-              className=" pl-2 xl:w-[365px]   w-[90%] text-greenAcc font-semibold  md:text-[22px]   focus:outline-none h-[50px] border-2 rounded-[10px] bg-transparent border-yellowAcc"
-            />
-            <span
-              onClick={() => setShowPassword(!showPassword)}
-              className="  absolute bottom-[17px] right-[1px]  xl:block hidden cursor-pointer"
-            >
-              {showPassword ? (
-                <FiEyeOff size={20} color="yellow" />
-              ) : (
-                <FiEye size={20} color="yellow" />
-              )}
-            </span>
+              <input
+                {...register("new_password")}
+                placeholder="Enter password"
+                type={showPassword ? "text" : "password"}
+                className=" pl-2 xl:w-[365px]   w-[90%] text-greenAcc font-semibold  md:text-[22px]   focus:outline-none h-[50px] border-2 rounded-[10px] bg-transparent border-yellowAcc"
+              />
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="  absolute bottom-[17px] right-[1px]  xl:block hidden cursor-pointer"
+              >
+                {showPassword ? (
+                  <FiEyeOff size={20} color="yellow" />
+                ) : (
+                  <FiEye size={20} color="yellow" />
+                )}
+              </span>
             </div>
-           
+
             {errors.new_password && (
-              <div className=" text-red-500 m-auto  mt-[10px] mb-[5px]">{`**${errors.new_password.message}`}</div>
+              <div className=" text-red-500 m-auto text-[15px] mt-[10px] mb-[5px]">{`**${errors.new_password.message}`}</div>
             )}
           </div>
 
@@ -129,24 +131,24 @@ export default function ChangePassword() {
             <input
               {...register("new_password_confirmation")}
               placeholder="Enter Password "
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               className="pl-2 xl:w-[365px]   w-[90%] text-greenAcc font-semibold  md:text-[22px]   focus:outline-none h-[50px] border-2 rounded-[10px] bg-transparent border-yellowAcc"
             />
             <div className=" relative">
-            <span
-              onClick={() => setShowPassword(!showPassword)}
-              className="  absolute bottom-[17px] right-[1px]  xl:block hidden cursor-pointer"
-            >
-              {showPassword ? (
-                <FiEyeOff size={20} color="yellow" />
-              ) : (
-                <FiEye size={20} color="yellow" />
-              )}
-            </span>
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="  absolute bottom-[17px] right-[1px]  xl:block hidden cursor-pointer"
+              >
+                {showPassword ? (
+                  <FiEyeOff size={20} color="yellow" />
+                ) : (
+                  <FiEye size={20} color="yellow" />
+                )}
+              </span>
             </div>
-            
+
             {errors.new_password_confirmation && (
-              <div className=" text-red-500 m-auto  mt-[10px] mb-[5px]">{`**${errors.new_password_confirmation.message}`}</div>
+              <div className=" text-red-500 m-auto text-[15px] mt-[10px] mb-[5px]">{`**${errors.new_password_confirmation.message}`}</div>
             )}
           </div>
         </div>

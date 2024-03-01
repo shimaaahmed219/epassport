@@ -1,5 +1,6 @@
 
 
+import { useState } from 'react'
 import EmployeeDetails from '../Components/EmployeeDetails'
 import Nav from '../Components/Nav'
 import icon from '../assets/employee/business-team-icon 1.svg'
@@ -7,6 +8,9 @@ import searchicon from '../assets/employee/shape (3).svg'
 import { Link } from 'react-router-dom'
 export default function Empolyee() {
 
+  const [search ,setSearch] = useState('')
+  console.log(search);
+  
   return (
     <div className='bg-bg min-h-screen w-6/6 py-4'>
       <Nav />
@@ -33,11 +37,16 @@ export default function Empolyee() {
             <span className='px-5'>
               <img src={searchicon} />
             </span>
-            <input type='search' className=' focus:outline-none w-[90%] h-full placeholder:text-[24px] placeholder:font-roboto focus:outline bg-transparent' placeholder='Search...' />
+            <input 
+            onChange={(e)=>(setSearch(e.target.value))
+            }
+            value={search}
+            type='search' 
+            className=' focus:outline-none w-[90%] h-full placeholder:text-[24px] placeholder:font-roboto focus:outline bg-transparent' placeholder='Search...' />
           </div>
         </div>
 
-     <EmployeeDetails/>
+     <EmployeeDetails search={search}/>
       </form>
     </div>
   )
