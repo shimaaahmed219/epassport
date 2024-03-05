@@ -42,7 +42,7 @@ export default function Empolyee() {
             }
             value={search}
             type='search' 
-            className=' focus:outline-none w-[90%] h-full placeholder:text-[24px] placeholder:font-roboto focus:outline bg-transparent' placeholder='Search...' />
+            className=' focus:outline-none px-5 w-[90%] h-full placeholder:text-[24px] placeholder:font-roboto focus:outline bg-transparent' placeholder='Search...' />
           </div>
         </div>
 

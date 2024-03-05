@@ -17,6 +17,9 @@ import NationalForm from './Pages/NationalForm'
 import DetailsForm from './Pages/DetailsForm'
 // import { Dashboard } from '@mui/icons-material'
 import DashbordEmployee from './Pages/DashbordEmployee'
+import About from './Pages/About'
+import Service from './Pages/Service'
+import Passport from './Pages/Passport'
 
 
 function App() {
@@ -27,6 +30,10 @@ function App() {
 <BrowserRouter>
 <Routes>
   <Route path='/'element={<LandingPage/>}/>
+  <Route path ="/about" element={<About/>}/>
+  <Route path ="/service" element={<Service/>}/>
+  <Route path='/Login' element={<Login/>}/>
+  <Route path ="/passport" element={<Passport/>}/>
   <Route path ='/addEmployee' element={<AddEmployee/>}/>
   <Route path ='/addFile' element={<AddFile/>}/>
   <Route path ='/Decrypt' element={<Decrypt/>}/>
@@ -34,7 +41,6 @@ function App() {
   <Route path='/EditProfile' element={<EditeProfile/>}/>
   <Route path='/Employee' element={<Empolyee/>}/>
   <Route path='/Encryption' element={<Encryption/>}/>
-  <Route path='/Login' element={<Login/>}/>
   <Route path='/passForm' element={<PassForm/>}/>
   <Route path='/tryagain' element={<TryAgain/>}/>
   <Route path='/status' element={<MartialStatus/>}/>

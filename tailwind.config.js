@@ -39,6 +39,7 @@ export default {
         "hover":"#556c58",
         "greenD": " #141D15",
         "yellowAcc": " #F6C90E",
+      
         "bg": "#EBEBEB",
         "oddRow": " #F8F8F8",
         "email": " #778D86",

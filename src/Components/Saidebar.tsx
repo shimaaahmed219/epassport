@@ -52,8 +52,11 @@ export default function Saidebar() {
             <div className='flex flex-col  items-center py-6'>
 
                 <div className="w-[65px] h-[67px] rounded-full userIcon flex justify-center items-center ">
+                   {data?.photo?
+                   
                     <img className='w-[65px] h-[67px] rounded-full' src={`https://epassport-api.preview-ym.com/${data?.photo}`}  />
-                </div>
+                  :'' }
+                    </div>
                 <h2 className={`font-tinos text-yellowAcc capitalize text-[24px]`}>{data?.name}</h2>
                 <h6 className={`font-roboto font-light text-email  text-[20px]`}>{data?.email}</h6>
                 <div className='flex flex-col w-full mt-5  '>
