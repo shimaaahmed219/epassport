@@ -13,6 +13,7 @@ import Logout from './Logout'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { url } from './URL'
+import decimg from '../assets/EncAndEecICONS/Group 2288.svg'
 interface data{
 name:string,
 email:string,
@@ -24,10 +25,13 @@ export default function Saidebar() {
     
     const links = [
         { id: 1, name: 'Statistics', href: "/", src: img },
-        { id: 2, name: ' Encrypted files', href: "/addFile", src: Encrypted },
+        { id: 2, name: 'All Encrypted files', href: "/addFile", src: Encrypted },
+        { id: 5, name: 'Add request', href: "/passForm", src:Edit },
+        { id: 9, name: 'add employee', href: "/addEmployee", src:users},
+        { id: 7, name: 'Encryption file', href: "/encryption", src: Encrypted },
+        { id: 8, name: 'Decrypt file', href: "/Decrypt", src: decimg },
         { id: 3, name: 'Employees', href: "/employee", src: employee },
         { id: 4, name: ' Users', href: "/", src: users },
-        { id: 5, name: ' Edit Profile', href: "/EditEmployee", src: Edit },
         { id: 6, name: ' Settings', href: "/", src: Settingsicon },
     ]
 
@@ -46,10 +50,10 @@ export default function Saidebar() {
 
 
     return (
-
-        <div className='w-[311px] h-[700px] bg-greenAcc overflow-y-auto   fixed top-0 left-0 z-50'>
-
-            <div className='flex flex-col  items-center py-6'>
+        <>
+       
+        <div className={` w-[311px] h-[700px] pb-10 bg-greenAcc overflow-y-auto   fixed top-0 left-0 z-50 `}>
+            <div className={` ${!data && "hidden"} flex flex-col  items-center py-6`}>
 
                 <div className="w-[65px] h-[67px] rounded-full userIcon flex justify-center items-center ">
                    {data?.photo?
@@ -67,9 +71,8 @@ export default function Saidebar() {
                                 to={link.href}
                                 className={`font-roboto font-medium hover:text-gray-100 flex my-2  capitalize items-center gap-[20px] w-full h-[40px] text-white border-none text-left text-[20px] hover:bg-opacity-10`}
                             >
+                                
                                 <img src={link.src} alt='' width={20} height={20} />
-
-
                                 {link.name}
 
                             </Link>
@@ -88,6 +91,7 @@ export default function Saidebar() {
             </div>
 
         </div>
-
+       
+</>
     )
 }

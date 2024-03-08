@@ -19,7 +19,7 @@ import DetailsForm from './Pages/DetailsForm'
 import DashbordEmployee from './Pages/DashbordEmployee'
 import About from './Pages/About'
 import Service from './Pages/Service'
-import Passport from './Pages/Passport'
+
 
 
 function App() {
@@ -33,7 +33,6 @@ function App() {
   <Route path ="/about" element={<About/>}/>
   <Route path ="/service" element={<Service/>}/>
   <Route path='/Login' element={<Login/>}/>
-  <Route path ="/passport" element={<Passport/>}/>
   <Route path ='/addEmployee' element={<AddEmployee/>}/>
   <Route path ='/addFile' element={<AddFile/>}/>
   <Route path ='/Decrypt' element={<Decrypt/>}/>

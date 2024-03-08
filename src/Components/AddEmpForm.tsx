@@ -90,12 +90,16 @@ export default function EditEmployeeForm() {
                         type="file"
                         className="w-full h-full z-50 opacity-0"
                     />
-
+ 
                     {/* {title} */}
                 </div>
+                
                 <div className=" mt-[-35px] ml-[80px]  w-[27px] h-[27px] bg-yellowAcc rounded-full flex justify-center items-center">
                     <img src={icon} className="text-yellowAcc" />
                 </div>
+                {errors.photo&& (
+                            <div className=" text-red-500 m-auto  mt-[10px] mb-[5px]">{`**${errors.photo.message}`}</div>
+                        )}
                 <h2 className={` font-tinos text-yellowAcc mt-5 text-[30px] capitalize`}>
                     Profil picture
                 </h2>

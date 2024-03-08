@@ -92,7 +92,7 @@ export default function LandingPage() {
 
       {/* Security */}
 
-      <div className="w-full min-h-[456px] bg-bg my-5">
+      <div className="w-full min-h-[456px] bg-bg my-[100px]">
         <div className="w-5/6 min-h-[456px] m-auto grid md:grid-cols-2 grid-cols-1   items-center md:justify-between justify-center ">
           <div className=" flex  items-center me-auto">
             <div className="relative">
