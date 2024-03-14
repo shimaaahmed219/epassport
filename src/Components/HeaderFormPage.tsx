@@ -6,7 +6,7 @@ export default function HeaderFormPage() {
   const location = useLocation();
   return (
     <div className="">
-      <ul className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-y-3 font-tinos font-bold text-xl leading-5 text-greenAcc items-center justify-center">
+      <ul className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-y-3 font-tinos font-bold text-xl leading-5 text-center text-greenAcc items-center justify-center">
         <li className={`flex`}>
           <div
             className={`${

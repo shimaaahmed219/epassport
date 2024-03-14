@@ -19,6 +19,7 @@ export default {
         xsm: "600px",
 
         md: "775px",
+        mmd:"850px",
                 // => @media (min-width: 768px) { ... }
         extramd: "900px",
         xxmd:'1050',

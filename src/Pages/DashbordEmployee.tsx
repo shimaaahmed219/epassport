@@ -1,11 +1,11 @@
-import Saidebar from "../Components/Saidebar";
+import FexidSidebar from "../Components/FexidSidebar";
+
 
 
 export default function DashbordEmployee() {
   return (
     <div className="w-full h-screen flex">
-        <Saidebar/>
-      
+        <FexidSidebar/>
     </div>
   )
 }

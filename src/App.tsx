@@ -19,6 +19,8 @@ import DetailsForm from './Pages/DetailsForm'
 import DashbordEmployee from './Pages/DashbordEmployee'
 import About from './Pages/About'
 import Service from './Pages/Service'
+import RecruitmentArea from './Pages/RecruitmentArea'
+
 
 
 
@@ -46,7 +48,10 @@ function App() {
   <Route path='/NationalForm' element={<NationalForm/>}/>
   <Route path='/DetailsForm' element={<DetailsForm/>}/>
   <Route path='/dashbord' element={<DashbordEmployee/>}/>
+  <Route path='/recruitment' element={<RecruitmentArea/>}/>
   <Route path ="*" element={<div>not found</div>}/>
+  
+
 
 </Routes>
 

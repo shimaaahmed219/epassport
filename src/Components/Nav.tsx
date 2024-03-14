@@ -7,23 +7,28 @@ import Saidebar from "./Saidebar";
 function Nav() {
   const [showSidebar, setShowSidebar] = useState(false);
 
-  const toogleSidebar = () => {
-    setShowSidebar(showSidebar === false ? true : false);
+  const handilOpen = () => {
+    setShowSidebar(true);
   };
 
+  const handilClose = () => {
+    setShowSidebar(false);
+  };
+  console.log(showSidebar);
+  
   return (
     // xl button size
     <div className={`bg-bg w-5/6 mt-3 m-auto flex flex-row justify-between `}>
       <div>
-        <button onClick={toogleSidebar}>
+        <button onClick={handilOpen}>
           <img src={icon2} className={`${showSidebar && "hidden"}`} />
         </button>
         <div
-          className={`${
-            !showSidebar && "hidden transition-opacity"
-          } absolute w-full bg-black transition-opacity	`}
+          className={`${`
+            !showSidebar && "hidden"
+          `} absolute w-full bg-black transition-opacity	`}
         >
-          <Saidebar />
+          <Saidebar handilClose={handilClose} showSidebar={showSidebar}/>
         </div>
       </div>
 

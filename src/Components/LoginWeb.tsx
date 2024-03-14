@@ -134,21 +134,25 @@ export default function LoginWeb() {
               {errors.email && (
                 <div className="text-red-500 mt-[-20px] mb-[15px]">{`**${errors.email.message}`}</div>
               )}
+              <div className="relative">
+
               <input
                 {...register("password")}
               type={showPassword ? 'text' : 'password'}
                 placeholder="password"
-                className="block focus:outline-none shadow-form placeholder:text-2xl rounded-input m-auto lg:w-[429px] md:w-[350px] sm:w-[280px] w-[240px] px-5 py-[20px] mb-10"
+                className="block  focus:outline-none shadow-form placeholder:text-2xl rounded-input m-auto lg:w-[429px] md:w-[350px] sm:w-[280px] w-[240px] px-5 py-[20px] mb-10"
               />
              <span
                 onClick={() => setShowPassword(!showPassword)} 
-                className="absolute lg:top-[65%] xl:right-[129px] top-[59%] lg:right-[90px] md:right-[50px] sm-[30px]    transform -translate-y-1/2 cursor-pointer"
+                className="absolute cursor-pointer top-5 xl:right-[80px] lg:right-[30px] md:right-[30px] right-[10px]"
               >
                  {showPassword ? <FiEyeOff size={20} color="yellow" /> : <FiEye size={20} color="yellow" />}
                 </span>
               {errors.password && (
                 <div className="text-red-500 mt-[-20px] mb-[20px]">{`**${errors.password.message}`}</div>
-              )}
+              )} 
+              </div>
+             
 
               <button
                 type="submit"

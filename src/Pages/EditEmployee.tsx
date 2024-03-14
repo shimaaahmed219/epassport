@@ -1,8 +1,9 @@
 
 
 import EditEmpForm from '../Components/EditEmpForm'
+import FexidSidebar from '../Components/FexidSidebar'
 import Nav from '../Components/Nav'
-import Saidebar from '../Components/Saidebar'
+
 
 
 
@@ -13,7 +14,7 @@ export default function EditEmployee() {
             <div className='flex  flex-row justify-between'>
            
             <div className='lg:block hidden'>
-               <Saidebar />
+             <FexidSidebar/>
                 </div> 
                
                 <div className='w-full h-full'>

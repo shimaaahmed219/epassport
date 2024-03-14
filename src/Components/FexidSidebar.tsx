@@ -12,21 +12,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { url } from "./URL";
 import decimg from "../assets/EncAndEecICONS/Group 2288.svg";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { IconButton } from "@mui/material";
 
-interface SaidebarProps {
-    handilClose: () => void;
-    showSidebar: boolean
-  }
-  
 interface data {
   name: string;
   email: string;
   photo: string;
 }
 
-export default function Saidebar({handilClose,showSidebar}:SaidebarProps) {
+export default function FexidSidebar() {
   const links = [
     { id: 1, name: "Statistics", href: "/", src: img },
     { id: 2, name: "All Encrypted files", href: "/addFile", src: Encrypted },
@@ -40,7 +33,7 @@ export default function Saidebar({handilClose,showSidebar}:SaidebarProps) {
   ];
 
   const [data, setData] = useState<data | undefined>(undefined);
-//   const [close, setClose] = useState(false);
+  //   const [close, setClose] = useState(false);
   useEffect(() => {
     axios
       .get(`${url}/auth/myProfile`, {
@@ -53,29 +46,15 @@ export default function Saidebar({handilClose,showSidebar}:SaidebarProps) {
   }, []);
   // console.log(data);
 
-//   const handilClose = () => {
-//     setClose(true);
-//   };
+  //   const handilClose = () => {
+  //     setClose(true);
+  //   };
 
   return (
     <>
       <div
-        className={`transition-opacity ${!showSidebar ?  'hide':'show' } w-[311px] h-[700px] pb-10 bg-greenAcc overflow-y-auto   fixed top-0 left-0 z-50 `}
+        className={` w-[311px] h-[700px] pt-5 pb-10 py-10 bg-greenAcc overflow-y-auto   fixed top-0 left-0 z-50 `}
       >
-        {/* <div  className='flex justify-end p-5 text-white'>
-       <ChevronLeftIcon/>
-       </div> */}
-        <div className="flex justify-end p-5">
-          <IconButton
-            className="text-white  text-[50px]"
-            onClick={handilClose}
-            edge="start"
-            // sx={{ ml: 5, ...(open && { display: 'none' }) }}
-          >
-            <ChevronLeftIcon className="ms-auto" />
-          </IconButton>
-        </div>
-
         <div
           className={` ${
             !data && "hidden"

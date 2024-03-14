@@ -2,7 +2,7 @@
 
 export default function DateOfBirth() {
   return (
-    <div className='flex px-10 pt-[15px] items-center text-greenAcc w-[60%] justify-between font-roboto'>
+    <div className='flex px-10 pt-[15px] items-center text-greenAcc xl:w-[60%] justify-between font-roboto'>
     <label className='font-roboto pt-6 text-[22px] font-semibold text-greenAcc'>Date of birth </label>
     
     <div>

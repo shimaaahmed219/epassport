@@ -2,7 +2,7 @@
 
 export default function PlaceOfBirth() {
   return (
-    <div className='flex'>
+    <div className='xl:flex'>
     <div className='px-10 mt-5  font-roboto  items-center text-[20px] text-greenAcc'>
         <label className='block my-3 text-greenAcc font-roboto font-medium'> Place of birth (department / governorate)</label>
         <div className='items-center flex'>

@@ -78,7 +78,7 @@ export default function ChangePassword() {
               />
               <span
                 onClick={() => setShowPassword(!showPassword)}
-                className="  absolute bottom-[17px] xl:right-[1px]  xl:block hidden cursor-pointer"
+                className="  absolute bottom-[17px] xl:right-[5px]  xl:block hidden cursor-pointer"
               >
                 {showPassword ? (
                   <FiEyeOff size={20} color="yellow" />
@@ -108,7 +108,7 @@ export default function ChangePassword() {
               />
               <span
                 onClick={() => setShowPassword(!showPassword)}
-                className="  absolute bottom-[17px] right-[1px]  xl:block hidden cursor-pointer"
+                className="  absolute bottom-[17px] right-[5px]  xl:block hidden cursor-pointer"
               >
                 {showPassword ? (
                   <FiEyeOff size={20} color="yellow" />
@@ -137,7 +137,7 @@ export default function ChangePassword() {
             <div className=" relative">
               <span
                 onClick={() => setShowPassword(!showPassword)}
-                className="  absolute bottom-[17px] right-[1px]  xl:block hidden cursor-pointer"
+                className="  absolute bottom-[17px] right-[5px]  xl:block hidden cursor-pointer"
               >
                 {showPassword ? (
                   <FiEyeOff size={20} color="yellow" />
