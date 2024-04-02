@@ -30,7 +30,7 @@ export default function Saidebar({handilClose,showSidebar}:SaidebarProps) {
   const links = [
     { id: 1, name: "Statistics", href: "/", src: img },
     { id: 2, name: "All Encrypted files", href: "/addFile", src: Encrypted },
-    { id: 5, name: "Add request", href: "/passForm", src: Edit },
+    { id: 5, name: "Add request", href: "/recruitmentPassForm", src: Edit },
     { id: 9, name: "add employee", href: "/addEmployee", src: users },
     { id: 7, name: "Encryption file", href: "/encryption", src: Encrypted },
     { id: 8, name: "Decrypt file", href: "/Decrypt", src: decimg },
@@ -60,7 +60,7 @@ export default function Saidebar({handilClose,showSidebar}:SaidebarProps) {
   return (
     <>
       <div
-        className={`transition-opacity ${!showSidebar ?  'hide':'show' } w-[311px] h-[700px] pb-10 bg-greenAcc overflow-y-auto   fixed top-0 left-0 z-50 `}
+        className={`transition-opacity ${!showSidebar ?  'hide':'show' } ${!showSidebar &&"hidden"} w-[311px] h-[700px] pb-20 bg-greenAcc overflow-y-auto  fixed top-0 left-0 z-50 `}
       >
         {/* <div  className='flex justify-end p-5 text-white'>
        <ChevronLeftIcon/>

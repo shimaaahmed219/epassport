@@ -9,17 +9,14 @@ import EditeProfile from "./Pages/EditProfile";
 import Empolyee from "./Pages/Employee";
 import Encryption from "./Pages/Encryption";
 import Login from "./Pages/Login";
-// import PassForm from './Pages/PassForm'
 import TryAgain from "./Pages/TrayAgain";
-// import MartialStatus from './Pages/MartialStatus'
-// import NationalForm from './Pages/NationalForm'
-// import DetailsForm from './Pages/DetailsForm'
-// import { Dashboard } from '@mui/icons-material'
 import DashbordEmployee from "./Pages/DashbordEmployee";
 import About from "./Pages/About";
 import Service from "./Pages/Service";
 import RecruitmentArea from "./Pages/RecruitmentArea";
-import PassRequest from "./Pages/PassRequest";
+import RecruitmentPassForm from "./Pages/RecruitmentPassForm";
+import PassEmployee from "./Pages/PassEmployee";
+import ForeignEmployee from "./Pages/ForeignEmployee";
 
 function App() {
   return (
@@ -37,14 +34,12 @@ function App() {
           <Route path="/EditProfile" element={<EditeProfile />} />
           <Route path="/Employee" element={<Empolyee />} />
           <Route path="/Encryption" element={<Encryption />} />
-          {/* <Route path='/passForm' element={<PassForm/>}/> */}
           <Route path="/tryagain" element={<TryAgain />} />
-          {/* <Route path='/status' element={<MartialStatus/>}/> */}
-          {/* <Route path='/NationalForm' element={<NationalForm/>}/> */}
-          {/* <Route path='/DetailsForm' element={<DetailsForm/>}/> */}
           <Route path="/dashbord" element={<DashbordEmployee />} />
           <Route path="/recruitment" element={<RecruitmentArea />} />
-          <Route path="/passForm" element={<PassRequest />} />
+          <Route path="/passForm" element={<RecruitmentPassForm />} />
+          <Route path="/PassEmployee" element={<PassEmployee />} />
+          <Route path="/forginEmployee" element={<ForeignEmployee />} />
           <Route path="*" element={<div>not found</div>} />
         </Routes>
       </BrowserRouter>

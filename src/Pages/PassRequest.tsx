@@ -4,25 +4,16 @@ import NationalForm from "./NationalForm";
 import DetailsForm from "./DetailsForm";
 import { useState } from "react";
 import { FieldValues, FormProvider, useForm } from "react-hook-form";
-
-// import { schema } from "@hookform/resolvers/ajv/src/__tests__/__fixtures__/data.js";
 import { url } from "../Components/URL";
 import axios from "axios";
-type schema = z.infer<typeof schema>;
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { schema } from "../validation";
-
 
 
 export default function PassRequest() {
   const [currentStep, setCurrentStep] = useState(1);
-  const methods = useForm<schema>({
-    resolver: zodResolver(schema),
-  });
+  const methods = useForm()
   const {
     handleSubmit,
-    formState: { errors },
+   
   } = methods;
 
   const onsubmit = (data: FieldValues) => {
@@ -56,7 +47,6 @@ export default function PassRequest() {
       .post(`${url}/client`, formdata, {
         headers: {
           "Content-Type": "multipart/form-data",
-          // "Authorization": `Bearer ${token}`,
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
       })
@@ -87,7 +77,7 @@ export default function PassRequest() {
   return (
     <div className=" w-full  bg-bg">
       <FormProvider {...methods}>
-        <form onSubmit={handleSubmit(onsubmit)}>
+        <form onSubmit={handleSubmit(onsubmit) }>
           {renderStep()}
           <div className="w-3/6 flex justify-around m-auto ">
             {currentStep > 1 && (

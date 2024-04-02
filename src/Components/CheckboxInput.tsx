@@ -1,55 +1,118 @@
-import { Checkbox, FormControlLabel } from "@mui/material";
-import { useFormContext } from "react-hook-form";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
 
-export default function CheckboxInput() {
-  const { register } = useFormContext();
+import {
+  CheckBoxOutlineBlank,
+ 
+} from "@mui/icons-material";
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+export default function CheckboxInput({register,errors}:any) {
+ 
   return (
-    <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 mb-5 font-roboto text-xl px-10 pt-7 pb-5 ">
-      <FormControlLabel
-        className="xl:w-[150px]"
-        control={
-          <Checkbox
-            {...register("type")}
-            value="first_time"
-            style={{ color: "#F6C90E" }}
-          />
-        }
-        label="First time"
-      />
-      <FormControlLabel
-        className="xl:ml-[-80px]"
-        control={
-          <Checkbox
-            {...register("type")}
-            value="Replacement_of_lost"
-            style={{ color: "#F6C90E" }}
-          />
-        }
-        label="Replacement of lost"
-      />
+    <div className=" ">
+  
+<FormControl>
+{errors.type&& (
+                            <div className=" text-red-500 mx-5 text-[20px]  ">{`**${errors.type.message}`}</div>
+                        )}
+                  <FormLabel id="demo-radio-buttons-group-label">
+                 
+                  </FormLabel>
+                  <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    // defaultValue="first_time"/
+                    name="radio-buttons-group"
+                    className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mb-5 font-roboto text-xl px-10 pt-7 pb-5"
+                  >
+                    <FormControlLabel
+                      value="first_time"
+                      control={
+                        <Radio
+                        {...register("type" ,{
+                           required:{
+                            value:true,
+                            message:"This field is required"
+                           }
+                          })}
+                        value="first_time"
+                        style={{ color: "#F6C90E" }}
+                          icon={<CheckBoxOutlineBlank fontSize="small" />}
+                          checkedIcon={
+                            <CheckBoxIcon  fontSize="small" />
+                          }
+                        />
+                      }
+                      label="first_time"
+                    />
+                    <FormControlLabel
+                    className="xl:ml-[-50px]"
+                     value="Replacement_of_lost"
+                      control={
+                        <Radio
+                        {...register("type" ,{
+                          required:{
+                           value:true,
+                           message:"This field is required"
+                          }
+                         })}
+                        value="Replacement_of_lost"
+                        style={{ color: "#F6C90E" }}
+                          icon={<CheckBoxOutlineBlank fontSize="small" />}
+                          checkedIcon={
+                            <CheckBoxIcon  fontSize="small" />
+                          }
+                        />
+                      }
+                      label="Replacement_of_lost"
+                    />
+                    <FormControlLabel
+                      className="xl:ml-[-50px]"
+                      value="Replacement_of_previous_passport"
+                      control={
+                        <Radio
+                        {...register("type" ,{
+                          required:{
+                           value:true,
+                           message:"This field is required"
+                          }
+                         })}
+                        value="Replacement_of_previous_passport"
+                        style={{ color: "#F6C90E" }}
+                          icon={<CheckBoxOutlineBlank fontSize="small" />}
+                          checkedIcon={
+                            <CheckBoxIcon  fontSize="small" />
+                          }
+                        />
+                      }
+                      label="Replacement_of_previous_passport"
+                    />
+                    <FormControlLabel
+                     value="Damaged_replacement"
+                     className="xl:ml-[50px]"
+                      control={
+                        <Radio
+                        {...register("type" ,{
+                          required:{
+                           value:true,
+                           message:"This field is required"
+                          }
+                         })}
+                        value="Damaged_replacement"
+                        style={{ color: "#F6C90E" }}
+                          icon={<CheckBoxOutlineBlank fontSize="small" />}
+                          checkedIcon={
+                            <CheckBoxIcon  fontSize="small" />
+                          }
+                        />
+                      }
+                      label="Damaged_replacement"
+                    />
+                  </RadioGroup>
+                 
+                </FormControl>
 
-      <FormControlLabel
-        className="xl:w-[320px] xl:ml-[-80px] "
-        control={
-          <Checkbox
-            {...register("type")}
-            value="Replacement_of_previous_passport"
-            style={{ color: "#F6C90E" }}
-          />
-        }
-        label="Replacement of previous passport"
-      />
-      <FormControlLabel
-        className="pl:ml-5"
-        control={
-          <Checkbox
-            {...register("type")}
-            value="Damaged_replacement"
-            style={{ color: "#F6C90E" }}
-          />
-        }
-        label="Damaged replacement "
-      />
+
+       
     </div>
   );
 }

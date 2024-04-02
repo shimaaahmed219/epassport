@@ -13,7 +13,7 @@ export default function DetailsForm() {
     <div className="bg-bg w-full py-2 min-h-[1100px] ">
       <Nav />
       <Hr />
-      {/* <form> */}
+      <form>
         <div className=" w-5/6 min-h-[423px] mb-10 py-5 bg-baform shadow-shadowEmp rounded-[20px] m-auto mt-10">
           <HeaderFormPage />
           <Hr />
@@ -100,7 +100,7 @@ export default function DetailsForm() {
         </div>
 
       
-      {/* </form> */}
+      </form>
     </div>
   );
 }

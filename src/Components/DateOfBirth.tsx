@@ -5,7 +5,7 @@ import { useFormContext } from "react-hook-form";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 export default function DateOfBirth() {
-  const { register } = useFormContext();
+  const { register,formState:{errors} } = useFormContext();
   return (
     <div className="flex  py-5">
       <div className="flex px-10 pt-[15px] items-center text-greenAcc xl:w-[50%]  font-roboto">
@@ -19,6 +19,9 @@ export default function DateOfBirth() {
             type="text"
             className="border-[1px] txt-[20px] font-roboto px-5 border-yellowAcc w-[250px] h-[50px] rounded-input"
           />
+             {errors.date_of_birth&& (
+                            <div className=" text-red-500 m-auto  mt-[10px] mb-[5px]">{`**${errors.date_of_birth.message}`}</div>
+                        )}
         </div>
       </div>
 
@@ -72,12 +75,15 @@ export default function DateOfBirth() {
               icon={<RadioButtonUncheckedIcon></RadioButtonUncheckedIcon>}
               checkedIcon={<CheckCircleIcon></CheckCircleIcon>}
               style={{ color: "#F6C90E" }}
+              
             />
           }
           label="female"
           className="lg:pl-20"
         />
-
+   {/* {errors.gender&& (
+                            <div className=" text-red-500 m-auto  mt-[10px] mb-[5px]">{`**${errors.gender.message}`}</div>
+                        )} */}
         {/* </Box> */}
       </div>
     </div>

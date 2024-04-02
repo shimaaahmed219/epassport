@@ -2,20 +2,22 @@ import img from "../assets/passForm/Group.svg";
 import CheckboxInput from "./CheckboxInput";
 import DateOfBirth from "./DateOfBirth";
 import EduactionForm from "./EduactionForm";
-import HeaderFormPage from "./HeaderFormPage";
+// import HeaderFormPage from "./HeaderFormPage";
 import PlaceOfBirth from "./PlaceOfBirth";
 import PresonalForm from "./PresonalForm";
 import uploadImg from "../assets/passForm/upload.svg";
-import PresonalFormArabic from "./PresonalFormArabic";
+// import PresonalFormArabic from "./PresonalFormArabic";
 
 import { useFormContext } from "react-hook-form";
+import PresonalFormArabic from "./PresonalFormArabic";
 
 export default function FormRequest() {
-  const { register } = useFormContext();
-
+  const { register ,formState:{errors}} = useFormContext();
+  
   return (
     <div className="w-full px-20">
-      <div className="flex">
+    {/* <form> */}
+    <div className="flex">
         {/* title  */}
 
         <div className="w-1/6 lg:mt-5 mt-20 ml-10 ">
@@ -60,7 +62,7 @@ export default function FormRequest() {
       </div>
 
       <div className="w-[100%] mt-10 min-h-screen bg-white rounded-[30px] p-10 shadow-shadowEmp">
-        <HeaderFormPage />
+        {/* <HeaderFormPage /> */}
         <hr className="w-[100%] h-[1px] my-10 bg-hr" />
 
         {/* checkbox input */}
@@ -78,8 +80,10 @@ export default function FormRequest() {
               type="type"
               className=" focus:outline-none w-[300px] h-[50px] px-[20px]   py-[6px] border-[1px] rounded-input border-yellowAcc"
             />
+           
           </div>
-
+        
+  {errors.passports_department&&( <span className="text-red-500 w-full">This field is required</span>)}
           {/* date */}
           <div className="gap-x-6 flex items-center font-roboto lg:mt-0 mt-3 text-[22px] text-greenAcc ">
             <label>The date</label>
@@ -104,6 +108,7 @@ export default function FormRequest() {
         {/*  educational qualification . */}
         <EduactionForm />
       </div>
+    {/* </form> */}
     </div>
   );
 }

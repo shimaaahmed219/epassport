@@ -1,70 +1,80 @@
+import React from "react";
 
-import { Link, useLocation } from "react-router-dom";
+type HeaderFormPageProps = {
+  goToStep: (step: number) => void;
+  step: number;
+};
 
+const HeaderFormPage: React.FC<HeaderFormPageProps> = ({  step }) => {
+  const isPageOpen = (pagestep: number) => step === pagestep;
 
-export default function HeaderFormPage() {
-  const location = useLocation();
   return (
-    <div className="">
-      <ul className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-y-3 font-tinos font-bold text-xl leading-5 text-center text-greenAcc items-center justify-center">
-        <li className={`flex`}>
-          <div
-            className={`${
-              location.pathname === "/passForm" && "bg-yellowAcc"
-            } w-[29px] mx-2 h-[29px] rounded-full bg-fileUploud flex justify-center items-center font-roboto text-lg`}
-          >
-            {" "}
-            1
-          </div>
-          <Link to="/passForm" className="mt-1">
-            {" "}
-            Personal information
-          </Link>
-        </li>
-
-        <li className="flex">
-          <div
-            className={`${
-              location.pathname === "/status" && "bg-yellowAcc"
-            } w-[29px] mx-2 h-[29px] rounded-full bg-fileUploud flex justify-center items-center font-roboto text-lg`}
-          >
-            {" "}
-            2
-          </div>
-          <Link to="/status" className="mt-1">
-            {" "}
-            Annat's marital status
-          </Link>
-        </li>
-        <li className="flex">
-          <div
-            className={`${
-              location.pathname === "/NationalForm" && "bg-yellowAcc"
-            } w-[29px] mx-2 h-[29px] rounded-full bg-fileUploud flex justify-center items-center font-roboto text-lg`}
-          >
-            {" "}
-            3
-          </div>
-          <Link to="/NationalForm" className="mt-1">
-            {" "}
-            I need proof of identity
-          </Link>
-        </li>
-        <li className="flex">
-          <div
-            className={`${
-              location.pathname === "/DetailsForm" && "bg-yellowAcc"
-            } w-[29px] mx-2 h-[29px] rounded-full bg-fileUploud flex justify-center items-center font-roboto text-lg`}
-          >
-            {" "}
-            4
-          </div>
-          <Link to="/DetailsForm" className="mt-1">
-            {" "}
-            I need proof of identity
-          </Link>
-        </li>
-      </ul>
+    <div className="xl:flex lg:grid lg:grid-cols-2 justify-between">
+      <button
+        className={`flex items-center xl:my-0 my-5  xl:justify-between xl:w-[170px] `}
+        // onClick={() => goToStep(1)}
+      >
+        <div
+          className={`w-[29px] mx-2 h-[29px] rounded-full bg-fileUploud flex justify-center items-center ${
+            isPageOpen(1) ? "bg-yellowAcc" : ""
+          } font-roboto text-lg`}
+        >
+          1
+        </div>
+        <h5 className="xl:w-[126px] text-start capitalize font-tinos font-bold text-[20px] text-greenAcc">
+          Personal information
+        </h5>
+      </button>
+      <button
+        className={`flex items-center xl:my-0 my-5  xl:justify-between `}
+        // onClick={() => goToStep(2)}
+      >
+        <div
+          className={`w-[29px] mx-2 h-[29px] rounded-full bg-fileUploud flex  ${
+            isPageOpen(2) ? "bg-yellowAcc" : ""
+          } justify-center items-center font-roboto text-lg`}
+        >
+          2
+        </div>
+        <h5 className="xl:w-[150px] text-start capitalize font-tinos font-bold text-[20px] text-greenAcc">
+          {" "}
+          Annat's marital status
+        </h5>
+      </button>
+      <button
+        className={`flex items-center xl:my-0 my-5  `}
+        // onClick={() => goToStep(3)}
+      >
+        <div
+          className={`w-[29px] mx-2 h-[29px] ${
+            isPageOpen(3) ? "bg-yellowAcc" : ""
+          } rounded-full bg-fileUploud flex justify-center items-center font-roboto text-lg`}
+        >
+          3
+        </div>
+        <h5 className="w-[150px] text-start capitalize font-tinos font-bold text-[20px] text-greenAcc">
+          {" "}
+          I need proof of identity
+        </h5>
+      </button>
+      <button
+        className={`flex items-center xl:my-0 my-5 `}
+        // onClick={() => goToStep(4)}
+      >
+        <div
+          className={`w-[29px] mx-2 h-[29px] rounded-full bg-fileUploud ${
+            isPageOpen(4) ? "bg-yellowAcc" : ""
+          } flex justify-center items-center font-roboto text-lg`}
+        >
+          4
+        </div>
+        <h5 className="xl:w-[405px] text-start capitalize font-tinos font-bold text-[20px] text-greenAcc">
+          {" "}
+          Names of those who can be reviewed when necessary in the A.S.C
+        </h5>
+      </button>
     </div>
   );
-}
+};
+
+export default HeaderFormPage;
