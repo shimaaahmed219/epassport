@@ -1,35 +1,27 @@
-import axios from "axios";
-  
-import "../Pages/style/login.css";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import img from "../assets/login/Group (2).svg";
 import img2 from "../assets/navImg/Group (1).svg";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import "../Pages/style/login.css";
+import Swal from "sweetalert2";
+import { User } from "../type";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+import { useLoginUserMutation } from "../rtk/api/apiSlice";
+import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { useNavigate } from "react-router-dom";
-import { url } from "./URL";
-import { useState } from "react";
-import Swal from "sweetalert2";
-import { FiEye, FiEyeOff } from 'react-icons/fi'
 type schima = z.infer<typeof schima>;
+import { schima } from "../type";
 
 
-const schima = z.object({
-  email: z.string().email(),
-  password: z.string().min(8, "password must be at last 8 characters"),
-});
 
-type User = {
-  name: string;
-  email: string;
-  token: string;
-  phone: number;
-};
 
 export default function LoginWeb() {
   const navigate = useNavigate();
   const [loginAttempts, setLoginAttempts] = useState(0);
-  const [showPassword,setShowPassword]= useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const [loginUser, { isLoading }] = useLoginUserMutation();
 
 
   const {
@@ -39,40 +31,39 @@ export default function LoginWeb() {
   } = useForm<schima>({
     resolver: zodResolver(schima),
   });
+
+  // handil login function
   const handilform = async (data: FieldValues) => {
-    axios
-      .post(`${url}/auth/login`, data)
-      .then((res) => {
-        console.log(res);
-        const userData: User = {
-          name: res.data.user.name,
-          token: res.data.access_token,
-          email: res.data.user.email,
-          phone: res.data.user.phone,
-        };
+    try {
+      const response = await loginUser(data).unwrap();
 
-        localStorage.setItem("user", JSON.stringify(userData));
-        localStorage.setItem("token", res.data.access_token);
+      const userData: User = {
+        name: response.user.name,
+        token: response.access_token,
+        email: response.user.email,
+        phone: response.user.phone,
+      };
 
-        navigate("/dashbord");
-      })
-      .catch((error) => {
-        console.log(error);
-        if( error.response.status === 422 || error.response.status ===401 ){
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Incorrect username or password!",
-          
-          });
-          
-        }
-        setLoginAttempts(loginAttempts + 1);
-        if (loginAttempts >= 2) {
-          navigate("/tryagain");
-        }
-        console.log(loginAttempts);
-      });
+      // set user data in localStorge
+      localStorage.setItem("user", JSON.stringify(userData));
+      localStorage.setItem("token", response.access_token);
+
+      navigate("/dashboard");
+      
+    } catch (error: any) {
+      console.error(error);
+      if (error.status === 422 || error.status === 401) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Incorrect username or password!",
+        });
+      }
+      setLoginAttempts(loginAttempts + 1);
+      if (loginAttempts >= 2) {
+        navigate("/tryagain");
+      }
+    }
   };
 
   return (
@@ -135,30 +126,32 @@ export default function LoginWeb() {
                 <div className="text-red-500 mt-[-20px] mb-[15px]">{`**${errors.email.message}`}</div>
               )}
               <div className="relative">
-
-              <input
-                {...register("password")}
-              type={showPassword ? 'text' : 'password'}
-                placeholder="password"
-                className="block  focus:outline-none shadow-form placeholder:text-2xl rounded-input m-auto lg:w-[429px] md:w-[350px] sm:w-[280px] w-[240px] px-5 py-[20px] mb-10"
-              />
-             <span
-                onClick={() => setShowPassword(!showPassword)} 
-                className="absolute cursor-pointer top-5 xl:right-[80px] lg:right-[30px] md:right-[30px] right-[10px]"
-              >
-                 {showPassword ? <FiEyeOff size={20} color="yellow" /> : <FiEye size={20} color="yellow" />}
+                <input
+                  {...register("password")}
+                  type={showPassword ? "text" : "password"}
+                  placeholder="password"
+                  className="block  focus:outline-none shadow-form placeholder:text-2xl rounded-input m-auto lg:w-[429px] md:w-[350px] sm:w-[280px] w-[240px] px-5 py-[20px] mb-10"
+                />
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute cursor-pointer top-5 xl:right-[80px] lg:right-[30px] md:right-[30px] right-[10px]"
+                >
+                  {showPassword ? (
+                    <FiEyeOff size={20} color="yellow" />
+                  ) : (
+                    <FiEye size={20} color="yellow" />
+                  )}
                 </span>
-              {errors.password && (
-                <div className="text-red-500 mt-[-20px] mb-[20px]">{`**${errors.password.message}`}</div>
-              )} 
+                {errors.password && (
+                  <div className="text-red-500 mt-[-20px] mb-[20px]">{`**${errors.password.message}`}</div>
+                )}
               </div>
-             
 
               <button
                 type="submit"
                 className={`font-tinos font-bold md:w-[210px] mt-2 w-[180px] h-[60px] capitalize  text-center text-white text-[32px] bg-greenAcc rounded-input`}
               >
-                login
+                {isLoading ? "Logging in..." : "Login"}
               </button>
             </form>
           </div>

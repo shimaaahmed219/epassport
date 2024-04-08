@@ -11,7 +11,7 @@ export default function Encryption() {
       <hr className='w-6/6  h-[0.15rem] bg-greenAcc my-3'/>
 
 
-      <div className='w-4/6 h-[100px] m-auto'>
+      <div className='w-6/6 h-[100px] m-auto'>
         
         <EncryptionType/>
         

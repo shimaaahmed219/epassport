@@ -16,9 +16,13 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import PresonalFormArabic from "./PresonalFormArabic";
+import { useParams } from "react-router-dom";
 
-export default function NewForm() {
+
+export default function UpdateClientForm() {
+    const {id:number} = useParams()
+    console.log(id);
+    
   const [step, setStep] = useState(1);
 
   const {
@@ -78,7 +82,7 @@ export default function NewForm() {
     formdata.append("religion", data.religion);
     formdata.append("age", data.age);
     axios
-      .post(`${url}/client`, formdata, {
+      .post(`${url}/client/{id}`, formdata, {
         headers: {
           "Content-Type": "multipart/form-data",
           // Authorization: `Bearer ${window.localStorage.getItem("token")}`,

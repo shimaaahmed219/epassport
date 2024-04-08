@@ -55,7 +55,7 @@ export default function EditEmployeeForm() {
         formdata.append("email", data.email);
         formdata.append("position", data.job);
         formdata.append("photo", data.photo[0]);
-        formdata.append("phone", data.phon);
+        formdata.append("phone", data.phone);
         
         axios
             .post(`${url}/employee`, formdata, {

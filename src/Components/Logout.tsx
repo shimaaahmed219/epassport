@@ -1,36 +1,34 @@
 import { Link, useNavigate } from 'react-router-dom'
 import logOuticon from '../assets/saidbaricon/Group (2).svg'
-import axios from 'axios'
-import { url } from './URL'
+import { useLogoutUserMutation } from '../rtk/api/apiSlice';
 
 export default function Logout() {
-
+    const [logoutUser] = useLogoutUserMutation();
     const navigate = useNavigate()
-    if (localStorage.getItem === null) navigate("/login");
-    const logout = () => {
-        axios.post(`${url}/auth/logout`, {
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                " Authorization": `Bearer ${window.localStorage.getItem("token")}`
-            }
-        }).then((res) => {
+
+
+    // Check if the token exists in local storag
+    if (!localStorage.getItem('token')) navigate("/login");
+  
+    // handil logout function
+    const logout = async () => {
+        try {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const response:any = await logoutUser();
+          if (response.error) {
+            console.error(response.error);
             localStorage.clear();
-            navigate("/login")
-            console.log(res);
-
+            navigate('/login');
+          } else {
+            localStorage.clear();
+            navigate('/login');
+          }
+        } catch (error) {
+          console.error(error);
+          localStorage.clear();
+          navigate('/login');
         }
-
-        ).catch((error) => {
-            console.log(error)
-            localStorage.clear()
-            navigate("/login")
-
-        }
-        );
-    };
-
-
+      };
 
 
 

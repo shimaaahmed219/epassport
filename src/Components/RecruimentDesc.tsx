@@ -6,6 +6,7 @@ import {
   TableRow,
   TableContainer,
 } from "@mui/material";
+
 import icon1 from "../assets/employee/edit.svg";
 import icon2 from "../assets/employee/shape (4).svg";
 import { useEffect, useState } from "react";
@@ -16,7 +17,9 @@ import last from "../assets/employee/Last.svg";
 import first from "../assets/employee/First.svg";
 import "./style/style.css";
 import { Link } from "react-router-dom";
-
+import { client } from "../type";
+import Swal from "sweetalert2";
+import RecruimentChangeStatus from "./RecruimentChangeStatus";
 type data = {
   id: string;
   name: string;
@@ -30,23 +33,15 @@ const colum: data[] = [
   { id: " Options", name: " Options" },
 ];
 
-type cleint = {
-  id: number;
-  first_name: string;
-  second_name: string;
-  third_name: string;
-  national_id: string;
-  Request_date: string;
-  updated_at: string;
-  photo: string;
-};
+
 
 export default function RecruimentDesc({ search }: { search: string }) {
-  const [cleint, setClient] = useState<cleint[]>([]);
+  const [cleint, setClient] = useState<client[]>([]);
   const [carrentPage, setCarrentPage] = useState(0);
 
   const pageSize = 7;
 
+  // fetchData
   useEffect(() => {
     axios
       .get(`${url}/client?type=recruitment district`, {
@@ -63,11 +58,53 @@ export default function RecruimentDesc({ search }: { search: string }) {
   const HandilPageChange = ({ selected }: { selected: number }) => {
     setCarrentPage(selected);
   };
+ 
   const startIndex = carrentPage * pageSize;
   const visbleEmployees = cleint
     .slice(startIndex, startIndex + pageSize)
-    .sort((a, b) => a.first_name.localeCompare(b.first_name));
+    .sort((a, b) =>` ${a.first_name} ${a.second_name} ${a.third_name}`.localeCompare(` ${b.first_name} ${b.second_name} ${b.third_name}`));
 
+    const handilDeletClient = (id: number) => {
+      // checked delete
+      Swal.fire({
+        title: "are you sure?",
+        text: "You will not be able to undo this action!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#324134",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "delete",
+        cancelButtonText: "cancel",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .delete(`${url}/client/${id}`, {
+              headers: {
+                Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+              },
+            })
+            // deleted
+            .then((res) => {
+              setClient((prev) => prev.filter((client) => client.id !== id));
+              console.log(res);
+              Swal.fire(
+                "Deleted!",
+                "Client has been deleted successfully.",
+                "success"
+              );
+            })
+            // error messge
+            .catch((error) => {
+              console.error("Error deleting employee", error);
+              Swal.fire(
+                "Error",
+                "An error occurred while trying to delete the employee.",
+                "error"
+              );
+            });
+        }
+      });
+    };
   return (
     <div className="w-5/6  m-auto my-10">
       <TableContainer
@@ -94,10 +131,12 @@ export default function RecruimentDesc({ search }: { search: string }) {
 
       {visbleEmployees
         .filter((item) => {
+          const fullName =`${item.first_name} ${item.second_name} ${item.third_name}`
           return search.toLowerCase() === ""
             ? item
-            : item.first_name.toLowerCase().includes(search);
+            : fullName.toLowerCase().includes(search);
         })
+
         .map((user, index) => (
           <div
             key={user.id}
@@ -108,6 +147,7 @@ export default function RecruimentDesc({ search }: { search: string }) {
                 {index + 1} -
               </span>
               <img
+              className="w-[40px] h-[40px] rounded-full"
                 src={`https://epassport-api.preview-ym.com/${user?.photo}`}
               />
               <span className="font-roboto flex  mt-1 xl:text-[15px] text-[15px]  text-greenD mx-3 capitalize">
@@ -121,9 +161,8 @@ export default function RecruimentDesc({ search }: { search: string }) {
             <div className="xl:text-[20px]  text-[15px]  w-[130px] text-greenD ml-[80px] ">
               {user.updated_at.substring(0, 10)}
             </div>
-            <div className="xl:text-[20px] w-[100px] text-center text-[15px] text-greenD ml-[80px]">
-              rejacted
-            </div>
+           
+            <RecruimentChangeStatus setClient={setClient} user={user}/>
             <div className=" flex gap-x-3 items-center  lg:ms-auto ">
               <Link
                 to=""
@@ -135,10 +174,12 @@ export default function RecruimentDesc({ search }: { search: string }) {
               <Link to="/" className="mr-3 lg:block hidden ">
                 <img src={icon1} />
               </Link>
-              <Link to="" className="lg:block hidden">
-                {" "}
+              <button
+                onClick={() => handilDeletClient(user.id)}
+                className="lg:block hidden"
+              >
                 <img src={icon2} />
-              </Link>
+              </button>
             </div>
           </div>
         ))}

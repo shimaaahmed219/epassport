@@ -17,6 +17,7 @@ import RecruitmentArea from "./Pages/RecruitmentArea";
 import RecruitmentPassForm from "./Pages/RecruitmentPassForm";
 import PassEmployee from "./Pages/PassEmployee";
 import ForeignEmployee from "./Pages/ForeignEmployee";
+import UpdateClientData from "./Pages/updateClientData";
 
 function App() {
   return (
@@ -35,11 +36,13 @@ function App() {
           <Route path="/Employee" element={<Empolyee />} />
           <Route path="/Encryption" element={<Encryption />} />
           <Route path="/tryagain" element={<TryAgain />} />
-          <Route path="/dashbord" element={<DashbordEmployee />} />
+          <Route path="/dashboard" element={<DashbordEmployee />} />
           <Route path="/recruitment" element={<RecruitmentArea />} />
           <Route path="/passForm" element={<RecruitmentPassForm />} />
           <Route path="/PassEmployee" element={<PassEmployee />} />
           <Route path="/forginEmployee" element={<ForeignEmployee />} />
+          <Route path="/forginEmployee" element={<ForeignEmployee />} />
+          <Route path="/updateClient/:id" element={<UpdateClientData/>} />
           <Route path="*" element={<div>not found</div>} />
         </Routes>
       </BrowserRouter>

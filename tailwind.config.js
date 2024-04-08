@@ -53,6 +53,9 @@ export default {
         'p': '#ACACAC',
         'landingBg': '#F2F2F2BF',
         'gradiant': '#fffbeb',
+      'approved':'#00FC19',
+      'rejected':'#FF0000',
+      'pending':'#BFBCBC',
       
 
 

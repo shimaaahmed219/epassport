@@ -19,6 +19,7 @@ import last from "../assets/employee/Last.svg";
 import first from "../assets/employee/First.svg";
 import "./style/style.css";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 type data = {
   id: string;
@@ -68,21 +69,47 @@ export default function EmployeeDetails({search}: { search: string }) {
     .sort((a, b) => a.name.localeCompare(b.name));
 
   // {delete employee}
-  const DeleteEmployee = (id: number) => {
-    axios
-      .delete(`${url}/employee/${id}`, {
-        headers: {
-          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-        },
-      })
-      .then((res) => {
-        setEmployee((prev) => prev.filter((employee) => employee.id !== id));
-        console.log(res);
-      })
-      .catch((error) => {
-        console.error("Error deleting employee", error);
-      });
-  };
+  
+
+const DeleteEmployee = (id: number) => {
+  Swal.fire({
+    title:'are you sure?',
+    text: "You will not be able to undo this action!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#324134',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'delete',
+    cancelButtonText: 'cancel'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axios
+        .delete(`${url}/employee/${id}`, {
+          headers: {
+            Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+          },
+        })
+        .then((res) => {
+          setEmployee((prev) => prev.filter((employee) => employee.id !== id));
+          console.log(res);
+          Swal.fire(
+            'Deleted!',
+            'Employee has been deleted successfully.',
+            'success'
+          );
+        })
+        .catch((error) => {
+          console.error("Error deleting employee", error);
+          Swal.fire(
+            'Error',
+            'An error occurred while trying to delete the employee.',
+            'error'
+          );
+        });
+    }
+  });
+};
+
 
   // { update status }
   const handilemployeeStatus = async (id: number, currentStatus: boolean) => {
