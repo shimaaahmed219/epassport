@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import img from "../assets/login/Group (2).svg";
-import img2 from "../assets/navImg/Group (1).svg";
+
+import img from "../../assets/login/Group (2).svg"
+import img2 from "../../assets/navImg/Group (1).svg"
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "../Pages/style/login.css";
+import "../../Pages/style/login.css";
 import Swal from "sweetalert2";
-import { User } from "../type";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { useLoginUserMutation } from "../rtk/api/apiSlice";
+import { useLoginUserMutation } from "../../rtk/api/apiSlice";
 import { z } from "zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 type schima = z.infer<typeof schima>;
-import { schima } from "../type";
+import { User, schima } from "../../type";
 
 
 
@@ -37,7 +37,7 @@ export default function LoginWeb() {
     try {
       const response = await loginUser(data).unwrap();
 
-      const userData: User = {
+      const userData:User = {
         name: response.user.name,
         token: response.access_token,
         email: response.user.email,
@@ -137,10 +137,11 @@ export default function LoginWeb() {
                   className="absolute cursor-pointer top-5 xl:right-[80px] lg:right-[30px] md:right-[30px] right-[10px]"
                 >
                   {showPassword ? (
-                    <FiEyeOff size={20} color="yellow" />
-                  ) : (
                     <FiEye size={20} color="yellow" />
+                  ) : (
+                    <FiEyeOff size={20} color="yellow" />
                   )}
+                  
                 </span>
                 {errors.password && (
                   <div className="text-red-500 mt-[-20px] mb-[20px]">{`**${errors.password.message}`}</div>

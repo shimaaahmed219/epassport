@@ -1,6 +1,6 @@
 
-import LoginWeb from '../Components/LoginWeb'
-import LoginMob from '../Components/LoginMob'
+import LoginWeb from '../Components/login/LoginWeb'
+import LoginMob from '../Components/login/LoginMob'
 
 
 

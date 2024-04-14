@@ -1,6 +1,6 @@
 
 
-import img from '../assets/navImg/Group (1).svg'
+import img from '../../assets/navImg/Group (1).svg'
 export default function LoginMob() {
   return (
     <div className=' bg-bg w-full h-full'>

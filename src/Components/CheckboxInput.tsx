@@ -6,21 +6,22 @@ import {
  
 } from "@mui/icons-material";
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
-export default function CheckboxInput({register,errors}:any) {
+export default function CheckboxInput({register}:any) {
  
   return (
     <div className=" ">
   
 <FormControl>
-{errors.type&& (
+{/* {errors.type&& (
                             <div className=" text-red-500 mx-5 text-[20px]  ">{`**${errors.type.message}`}</div>
-                        )}
+                        )} */}
                   <FormLabel id="demo-radio-buttons-group-label">
                  
                   </FormLabel>
                   <RadioGroup
+                  
                     aria-labelledby="demo-radio-buttons-group-label"
-                    // defaultValue="first_time"/
+                     defaultValue="first_time"
                     name="radio-buttons-group"
                     className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mb-5 font-roboto text-xl px-10 pt-7 pb-5"
                   >

@@ -102,36 +102,7 @@ export default function PassportAreaDesc({ search }: { search: string }) {
     });
   };
 
-  // const showRejectedMess = (id: number) => {
-  //   axios
-  //     .get(`${url}/client/${id}`)
-  //     .then((res) => {
-  //       const rejectedMessage = res.data.data.client_order?.reject_reason;
-  //       if (rejectedMessage) {
-  //         Swal.fire({
-  //           title: "Rejected Message",
-  //           text: rejectedMessage,
-  //           icon: "error",
-  //         });
-  //       } else {
-  //         Swal.fire({
-  //           title: "Rejected Message",
-  //           text: "No rejected message found.",
-  //           icon: "info",
-  //         });
-  //       }
-  //       setClient(...cleint,rejectedMessage)
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching rejected message", error);
-  //       Swal.fire({
-  //         title: "Error",
-  //         text: "An error occurred while fetching rejected message.",
-  //         icon: "error",
-  //       });
-  //     });
-  // };
-
+ 
   return (
     <div className="w-[80%]  m-auto my-10">
       <TableContainer
@@ -192,6 +163,7 @@ export default function PassportAreaDesc({ search }: { search: string }) {
             {/* details */}
             <div className=" flex gap-x-3 items-center  lg:ms-auto ">
               <Link
+                // to={`/viewDetails/${user.id}`}
                 to=""
                 className="text-[16px] font-normal text-white bg-yellowAcc h-[34px] w-[140px] rounded-[25px] flex items-center justify-center"
               >

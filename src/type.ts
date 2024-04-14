@@ -1,17 +1,21 @@
-import { SelectChangeEvent } from "@mui/material";
-import { object, z } from "zod";
+// import { SelectChangeEvent } from "@mui/material";
+import {  z } from "zod";
 
 
 const MAX_FILE_SIZE = 5000000;
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png"];
 
-export const FormDataSchema = object({
+export const FormDataSchema = z.object({
   type: z.string(),
   passports_department: z.string(),
   first_name: z.string(),
   second_name: z.string(),
+  last_name:z.string(),
   third_name: z.string(),
-  last_name: z.string(),
+  first_name_ar: z.string(),
+  second_name_ar: z.string(),
+  third_name_ar: z.string(),
+  last_name_ar: z.string(),
   national_id: z.number(),
   photo: z
     .any()
@@ -33,7 +37,7 @@ export const FormDataSchema = object({
       (files) => ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type),
       "Only .jpg, .jpeg, .png and  formats are supported."
     ),
-  data_of_birth: z.number(),
+    date_of_birth: z.string(),
   birth_cert: z
     .any()
     .refine(
@@ -47,7 +51,7 @@ export const FormDataSchema = object({
   phone: z.number(),
   home_phone: z.number(),
   age: z.number(),
-  academic_Qualtifiction: z.string(),
+  academic_qualification: z.string(),
   graduation_cert: z
     .any()
     .refine(
@@ -58,20 +62,20 @@ export const FormDataSchema = object({
       (files) => ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type),
       "Only .jpg, .jpeg, .png and  formats are supported."
     ),
-  universty_id: z.number(),
+    university_id: z.number(),
   marital_status: z.string(),
   job: z.string(),
   address: z.string(),
   governorate: z.string(),
-  gander: z.string(),
-  houband_name: z.string(),
+  gender: z.string(),
+  husband_name: z.string(),
   religion: z.string(),
 });
 
 // login data type
 export type User = {
-  status: any;
-  id(event: SelectChangeEvent<any>, id: any): void;
+  // status: unknown;
+  // id(event: SelectChangeEvent<unknown>, id: unknown): void;
   name: string;
   email: string;
   token: string;

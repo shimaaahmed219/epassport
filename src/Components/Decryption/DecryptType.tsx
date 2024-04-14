@@ -5,7 +5,7 @@
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import icon from '../assets/arrow-up.svg'
+import icon from '../../assets/arrow-up.svg'
 
 function DecryptType() {
   return (

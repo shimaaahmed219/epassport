@@ -1,7 +1,7 @@
 
 
 import polygon from '../assets/tryAgain/Polygon.svg'
-import Countdown from '../Components/Countdown'
+import Countdown from '../Components/TryAgain/Countdown'
 export default function TryAgain() {
   return (
     <div className='bg-bg md:flex md:flex-row h-screen grid justify-center md:placeholder:justify-between text-center'>

@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import LandingPage from "./Pages/LandingPage";
 import AddEmployee from "./Pages/AddEmployee";
-import AddFile from "./Pages/AddFile";
 import Decrypt from "./Pages/Decrypt";
 import EditEmployee from "./Pages/EditEmployee";
 import EditeProfile from "./Pages/EditProfile";
@@ -17,7 +16,10 @@ import RecruitmentArea from "./Pages/RecruitmentArea";
 import RecruitmentPassForm from "./Pages/RecruitmentPassForm";
 import PassEmployee from "./Pages/PassEmployee";
 import ForeignEmployee from "./Pages/ForeignEmployee";
-import UpdateClientData from "./Pages/updateClientData";
+import UpdateClientData from "./Pages/UpdateClientData";
+import EncryptedFiles from "./Pages/EncryptedFiles";
+// import UpdateClientData from "./Pages/ClientDetails";
+// import ClientDetails from "./Pages/ClientDetails";
 
 function App() {
   return (
@@ -29,7 +31,7 @@ function App() {
           <Route path="/service" element={<Service />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/addEmployee" element={<AddEmployee />} />
-          <Route path="/addFile" element={<AddFile />} />
+          <Route path="/Encryptedfiles" element={<EncryptedFiles />} />
           <Route path="/Decrypt" element={<Decrypt />} />
           <Route path="/EditEmployee/:id" element={<EditEmployee />} />
           <Route path="/EditProfile" element={<EditeProfile />} />
@@ -43,6 +45,7 @@ function App() {
           <Route path="/forginEmployee" element={<ForeignEmployee />} />
           <Route path="/forginEmployee" element={<ForeignEmployee />} />
           <Route path="/updateClient/:id" element={<UpdateClientData/>} />
+          {/* <Route path="/viewDetails/:id" element={<ClientDetails/>} /> */}
           <Route path="*" element={<div>not found</div>} />
         </Routes>
       </BrowserRouter>

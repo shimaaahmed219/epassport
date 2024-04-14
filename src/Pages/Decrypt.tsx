@@ -1,7 +1,7 @@
-import DecryptType from '../Components/DecryptType'
+import DecryptType from '../Components/Decryption/DecryptType'
 import Nav from '../Components/Nav'
-import Bcol from '../Components/svg/Bcol'
-import Brow from '../Components/svg/Brow'
+import Bcol from '../Components/EncriptionRowAndCol/Bcol'
+import Brow from '../Components/EncriptionRowAndCol/Brow'
 
 export default function Decrypt() {
   return (
