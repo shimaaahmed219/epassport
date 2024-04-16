@@ -5,17 +5,22 @@ import {
   TableHead,
   TableRow,
   TableContainer,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
 } from "@mui/material";
-import icon1 from "../assets/employee/edit.svg";
-import icon2 from "../assets/employee/shape (4).svg";
+import icon1 from "../../assets/employee/edit.svg";
+import icon2 from "../../assets/employee/shape (4).svg";
 import { useEffect, useState } from "react";
-import { url } from "./URL";
+import { url } from "../URL";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
-import last from "../assets/employee/Last.svg";
-import first from "../assets/employee/First.svg";
-import "./style/style.css";
-import { client, dataColum } from "../type";
+import last from "../../assets/employee/Last.svg";
+import first from "../../assets/employee/First.svg";
+import ".././style/style.css";
+import { client, dataColum } from "../../type";
 import { Link } from "react-router-dom";
 // import { useDeleteClientMutation } from "../rtk/api/apiSlice";
 import Swal from "sweetalert2";
@@ -32,8 +37,24 @@ const colum: dataColum[] = [
 export default function PassportAreaDesc({ search }: { search: string }) {
   const [cleint, setClient] = useState<client[]>([]);
   const [carrentPage, setCarrentPage] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedClient, setSelectedClient] = useState<client | null>(null);
   const pageSize = 7;
-  // const [deleteClient] = useDeleteClientMutation()
+  
+
+  // const handlePageChange = ({ selected }: { selected: number }) => {
+  //   setCurrentPage(selected);
+  // };
+
+  const handleOpenModal = (client: client) => {
+    setSelectedClient(client);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedClient(null);
+  }; 
 
   // get client
   useEffect(() => {
@@ -46,9 +67,11 @@ export default function PassportAreaDesc({ search }: { search: string }) {
       })
       .then((res) => {
         setClient(res.data.data);
-        console.log(res);
+        // setSelectedClient(res.data.data)
+        // console.log(res);
       });
   }, []);
+
 
   // pagination
   const HandilPageChange = ({ selected }: { selected: number }) => {
@@ -101,6 +124,7 @@ export default function PassportAreaDesc({ search }: { search: string }) {
       }
     });
   };
+  
 
  
   return (
@@ -111,7 +135,7 @@ export default function PassportAreaDesc({ search }: { search: string }) {
       >
         <Table className="">
           <TableHead className="bg-greenAcc h-[70px]  ">
-            <TableRow className="flex  [&>*:nth-child(1)]:w-[150px]    [&>*:nth-child(2)]:pl-[60px]  [&>*:nth-child(3)]:ml-[-30px] [&>*:nth-child(4)]:ml-[-40px] [&>*:nth-child(1)]:justify-center justify-around items-center ">
+            <TableRow className="flex  [&>*:nth-child(1)]:w-[150px]    [&>*:nth-child(2)]:pl-[25px]  [&>*:nth-child(3)]:ml-[-30px] [&>*:nth-child(4)]:ml-[-40px] [&>*:nth-child(1)]:justify-center justify-around items-center ">
               {colum.map((col) => (
                 <TableCell
                   className="border-none h-[70px] items-center text-white flex"
@@ -139,8 +163,8 @@ export default function PassportAreaDesc({ search }: { search: string }) {
             className="flex   font-roboto text-[22px]   my-4 bg-white rounded-[14px] shadow-employee lg:h-[70px] items-center px-5"
           >
             <div className="flex  w-[25%] items-center ">
-              <span className="xl:text-[22px] text-[15px] text-yellowAcc ">
-                {index + 1} -
+              <span className="xl:text-[19px] mx-2 text-[15px] text-yellowAcc ">
+                {index + 1} 
               </span>
               <img
                 className="w-[50px] h-[50px] rounded-full"
@@ -154,7 +178,7 @@ export default function PassportAreaDesc({ search }: { search: string }) {
             <div className="text-yellowAcc text-[18px] w-[150px]  text-center">
               {user.national_id.substring(0, 14)}
             </div>
-            <div className="xl:text-[20px]  text-[15px]  w-[130px] text-greenD ml-[80px] ">
+            <div className="xl:text-[20px]  text-[15px]  w-[130px] text-greenD ml-[70px] ">
               {user.updated_at.substring(0, 10)}
             </div>
             <ChangStatus setClient={setClient} user={user} />
@@ -162,13 +186,12 @@ export default function PassportAreaDesc({ search }: { search: string }) {
            
             {/* details */}
             <div className=" flex gap-x-3 items-center  lg:ms-auto ">
-              <Link
-                // to={`/viewDetails/${user.id}`}
-                to=""
+              <button
+                onClick={() => handleOpenModal(user)}
                 className="text-[16px] font-normal text-white bg-yellowAcc h-[34px] w-[140px] rounded-[25px] flex items-center justify-center"
               >
-                View detail
-              </Link>
+              view detaild
+              </button>
 
               <Link to={`/updateClient/${user.id}`} className="mr-3 lg:block hidden ">
                 <img src={icon1} />
@@ -201,6 +224,25 @@ export default function PassportAreaDesc({ search }: { search: string }) {
           nextLinkClassName="flex items-center justify-center text-black"
         />
       </div>
+      <Dialog open={modalOpen} onClose={handleCloseModal}>
+        <DialogTitle style={{color:"green"}}>Request Details</DialogTitle>
+        <DialogContent>
+          {/* Display request status and reason for rejection */}
+          {selectedClient && (
+            <>
+              <p style={{fontFamily:"Roboto",fontWeight:"bold"}}>Request Status: {selectedClient.client_order.status}</p>
+              {selectedClient.client_order.status === "rejected" && (
+                <p style={{fontFamily:"Roboto",fontWeight:"bold"}}>Reason for Rejection: {selectedClient.client_order.reject_reason}</p>
+              )}
+            </>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseModal} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

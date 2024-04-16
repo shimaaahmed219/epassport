@@ -2,7 +2,7 @@ import { useState } from "react";
 import Hr from "../Components/Hr";
 import Nav from "../Components/Nav";
 import searchicon from '../assets/employee/shape (3).svg'
-import PassportAreaDesc from "../Components/PassportAreaDesc";
+import PassportAreaDesc from "../Components/PassEmployee/PassportAreaDesc";
 
 export default function PassEmployee() {
     

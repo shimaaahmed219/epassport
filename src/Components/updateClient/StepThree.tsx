@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { FiEye } from "react-icons/fi";
 import HeaderFormPage from "../HeaderFormPage";
 import Hr from "../Hr";
+import { SetStateAction, useState } from "react";
+import { Dialog} from "@mui/material";
+import { IoMdClose } from "react-icons/io";
 
 
 interface StepThreeProps {
@@ -14,7 +18,49 @@ interface StepThreeProps {
   }
 
 
+ 
+    const ImageModal = ({
+      isOpen,
+      onRequestClose,
+      imageUrl,
+    }: {
+      isOpen: boolean;
+      onRequestClose: () => void;
+      imageUrl: string | null;
+    }) => {
+    
+   
+  return (
+    <Dialog
+      open={isOpen}
+      onClose={onRequestClose}
+      fullWidth
+      maxWidth="sm"
+    
+    >
+      <button  onClick={onRequestClose} className="w-full">
+        <IoMdClose className="text-white ms-auto"   style={{right:"5px",top:"5px",position:"absolute",color:"white"}} />
+      </button>
+      <img src={imageUrl} alt="Image"  />
+    </Dialog>
+  );
+};
+  
+
 export default function StepThree({register, errors,prevStep,image,nextStep ,step,goToStep}:StepThreeProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const openModal = (img: string | SetStateAction<null>) => {
+    setSelectedImage(img);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+    setIsModalOpen(false);
+  };
+
   return (
     <>
      <div className="w-[85%] shadow-shadowEmp mt-10 bg-baform min-h-[778px] m-auto py-7  rounded-[20px] justify-center ">
@@ -67,7 +113,7 @@ export default function StepThree({register, errors,prevStep,image,nextStep ,ste
                       <input
                         {...register("birth_cert")}
                         type="file"
-                        className="opacity-0 w-full h-full absolute z-50"
+                        className="opacity-0 w-full h-[90%] absolute z-50"
                       />
 
                       <div className="absolute text-center ">
@@ -75,7 +121,14 @@ export default function StepThree({register, errors,prevStep,image,nextStep ,ste
                           className=" w-[236px] h-[200px]"
                           src={`https://epassport-api.preview-ym.com/${image?.birth_cert}`}
                         />
+
                       </div>
+                      <button
+                      type="button"
+                      onClick={() => openModal(`https://epassport-api.preview-ym.com/${image?.birth_cert}`)}
+                      className=" right-[-10px] bottom-[-8px] w-[30px] h-[30px] flex justify-center items-center rounded-full bg-yellowAcc absolute">
+            <FiEye className="text-white   " />
+          </button>
                     </div>
                   </div>
                 </div>
@@ -89,7 +142,7 @@ export default function StepThree({register, errors,prevStep,image,nextStep ,ste
                       <input
                         {...register("national_id_photo")}
                         type="file"
-                        className="opacity-0 w-full h-full absolute z-50"
+                        className="opacity-0 w-full h-[90%] absolute z-50"
                       />
                       <div className="absolute text-center ">
                         <img
@@ -97,6 +150,12 @@ export default function StepThree({register, errors,prevStep,image,nextStep ,ste
                           src={`https://epassport-api.preview-ym.com/${image?.national_id_photo}`}
                         />
                       </div>
+                      <button
+                      type="button"
+                      onClick={() => openModal(`https://epassport-api.preview-ym.com/${image?.national_id_photo}`)}
+                      className=" right-[-10px] bottom-[-8px] w-[30px] h-[30px] flex justify-center items-center rounded-full bg-yellowAcc absolute">
+            <FiEye className="text-white   " />
+          </button>
                     </div>
                   </div>
                 </div>
@@ -109,7 +168,7 @@ export default function StepThree({register, errors,prevStep,image,nextStep ,ste
                       <input
                         {...register("graduation_cert")}
                         type="file"
-                        className="opacity-0 w-full h-full absolute z-50"
+                        className="opacity-0 w-full h-[90%] absolute z-50"
                       />
 
                       <div className="absolute text-center ">
@@ -118,10 +177,18 @@ export default function StepThree({register, errors,prevStep,image,nextStep ,ste
                           src={`https://epassport-api.preview-ym.com/${image?.graduation_cert}`}
                         />
                       </div>
-                    </div>
+                      <button
+                      type="button"
+                      onClick={() => openModal(`https://epassport-api.preview-ym.com/${image?.graduation_cert}`)}
+                      className=" right-[-10px] bottom-[-8px] w-[30px] h-[30px] flex justify-center items-center rounded-full bg-yellowAcc absolute">
+            <FiEye className="text-white   " />
+          </button>
                   </div>
+                  
+                </div>
                 </div>
               </div>
+           
               {/* date */}
 
               <div className="w-5/6 m-auto mt-10">
@@ -162,6 +229,12 @@ export default function StepThree({register, errors,prevStep,image,nextStep ,ste
                 Next
               </button>
             </div>
+            
+        <ImageModal
+          isOpen={isModalOpen}
+          onRequestClose={closeModal}
+          imageUrl={selectedImage}
+        />
     </>
   )
 }

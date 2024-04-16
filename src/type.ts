@@ -1,6 +1,5 @@
 // import { SelectChangeEvent } from "@mui/material";
-import {  z } from "zod";
-
+import { z } from "zod";
 
 const MAX_FILE_SIZE = 5000000;
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png"];
@@ -10,7 +9,7 @@ export const FormDataSchema = z.object({
   passports_department: z.string(),
   first_name: z.string(),
   second_name: z.string(),
-  last_name:z.string(),
+  last_name: z.string(),
   third_name: z.string(),
   first_name_ar: z.string(),
   second_name_ar: z.string(),
@@ -37,7 +36,7 @@ export const FormDataSchema = z.object({
       (files) => ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type),
       "Only .jpg, .jpeg, .png and  formats are supported."
     ),
-    date_of_birth: z.string(),
+  date_of_birth: z.string(),
   birth_cert: z
     .any()
     .refine(
@@ -62,7 +61,7 @@ export const FormDataSchema = z.object({
       (files) => ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type),
       "Only .jpg, .jpeg, .png and  formats are supported."
     ),
-    university_id: z.number(),
+  university_id: z.number(),
   marital_status: z.string(),
   job: z.string(),
   address: z.string(),
@@ -126,6 +125,7 @@ export const updatEmployeeDataschema = z.object({
 
 // get client data type
 export type client = {
+  Request_Status: string;
   id: number;
   first_name: string;
   second_name: string;
@@ -136,8 +136,12 @@ export type client = {
   photo: string;
   status: string;
   reject_reason: string;
-  rejectedMessage:string;
-  
+  rejectedMessage: string;
+  client_order: {
+    received_type: string;
+    status: string;
+    reject_reason: string;
+  };
 };
 export type dataColum = {
   id: string;

@@ -72,9 +72,9 @@ export default function Saidebar({ handilClose, showSidebar }: SaidebarProps) {
         </h6>
         <div className="flex flex-col w-full mt-5  ">
           {links.map((link) => (
-            <div className="hover:bg-hover px-5 hover:pl-10">
+            <div   key={link.id} className="hover:bg-hover px-5 hover:pl-10">
               <Link
-                key={link.id}
+             
                 to={link.href}
                 className={`font-roboto font-medium hover:text-gray-100 flex my-2  capitalize items-center gap-[20px] w-full h-[40px] text-white border-none text-left text-[20px] hover:bg-opacity-10`}
               >

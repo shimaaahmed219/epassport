@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   FormControl,
   InputLabel,
@@ -7,7 +8,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { url } from "./URL";
+import { url } from "../URL";
 
 interface User {
   id: number;
@@ -70,7 +71,7 @@ export default function ChangStatus({
           // Handle success and error responses
           if (response.status === 200) {
             // Update client status in state
-            setClient((prevClients) => {
+            setClient((prevClients: { id: number; }[]) => {
               return prevClients.map((client: { id: number }) => {
                 if (client.id === id) {
                   return {
@@ -173,7 +174,7 @@ export default function ChangStatus({
         // Handle success and error responses
         if (response.status === 200) {
           // Update client status in state
-          setClient((prevClients) =>
+          setClient((prevClients: { id: number; }[]) =>
             prevClients.map((client: { id: number }) =>
               client.id === id ? { ...client, status: selectedValue } : client
             )
@@ -196,6 +197,7 @@ export default function ChangStatus({
       });
     }
   };
+
   return (
     <div>
       <div className="xl:text-[20px] w-[150px] text-center text-[15px]  text-greenD ml-[40px]">

@@ -14,7 +14,7 @@ function Nav() {
   const handilClose = () => {
     setShowSidebar(false);
   };
-  console.log(showSidebar);
+  // console.log(showSidebar);
   
   return (
     // xl button size

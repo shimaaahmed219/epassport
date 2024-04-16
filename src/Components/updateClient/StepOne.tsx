@@ -5,14 +5,18 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
+  Button,
+  Dialog,
+ 
 } from "@mui/material";
 import { FiEye } from "react-icons/fi";
 import img from "../../assets/passForm/Group.svg";
 import CheckboxInput from "../CheckboxInput";
 import HeaderFormPage from "../HeaderFormPage";
+import { useState } from "react";
+import { IoMdClose } from "react-icons/io";
 
-
-// data type
+// data
 interface StepOneProps {
   register: any;
   errors: any;
@@ -22,7 +26,6 @@ interface StepOneProps {
   client: any;
   goToStep: (stepNumber: number) => void;
 }
-
 export default function StepOne({
   register,
   client,
@@ -32,6 +35,15 @@ export default function StepOne({
   step,
   goToStep,
 }: StepOneProps) {
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
   return (
     <>
       <div className="flex">
@@ -65,13 +77,18 @@ export default function StepOne({
             className="absolutew-[158px] h-[207px]"
             src={`https://epassport-api.preview-ym.com/${image?.photo}`}
           />
-          <button></button>
-          <div className=" right-[-10px] bottom-[-8px] w-[30px] h-[30px] flex justify-center items-center rounded-full bg-yellowAcc absolute">
+          <button
+            type="button"
+            onClick={handleOpenDialog}
+            className=" right-[-10px] bottom-[-8px] w-[30px] h-[30px] flex justify-center items-center rounded-full bg-yellowAcc absolute"
+          >
             <FiEye className="text-white   " />
-          </div>
+          </button>
         </div>
       </div>
 
+      {/* show image */}
+    
       {/* form1 */}
       <div className="w-[100%] mt-10 min-h-screen bg-white rounded-[30px] p-10 shadow-shadowEmp">
         {/* Select the active page */}
@@ -503,6 +520,26 @@ export default function StepOne({
           Next
         </button>
       </div>
+      <Dialog
+        fullWidth
+        maxWidth="sm"
+        open={openDialog}
+        onClose={handleCloseDialog}
+      >
+           <Button style={{position:"absolute",right:"5px",top:"5px" }} className="" onClick={handleCloseDialog} color="primary">
+          <IoMdClose className="text-white "   style={{right:"5px",top:"5px",fontSize:"20px",position:"absolute",color:"white"}} />
+          </Button>
+       
+          <img
+          style={{width:"100%"}}
+            src={`https://epassport-api.preview-ym.com/${image?.photo}`}
+            alt="Passport Photo"
+          />
+       
+      
+       
+       
+      </Dialog>
     </>
   );
 }

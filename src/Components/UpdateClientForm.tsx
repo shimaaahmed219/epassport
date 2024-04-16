@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { url } from "../URL";
+import { url } from "../Components/URL";
 import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
-import StepFour from "./StepFour";
-import StepThree from "./StepThree";
-import StepTwo from "./StepTwo";
-import StepOne from "./stepOne";
+import StepFour from "./updateClient/StepFour";
+import StepThree from "./updateClient/StepThree";
+import StepTwo from "./updateClient/StepTwo";
+import StepOne from "./updateClient/stepOne";
 
 export default function UpdateClientForm() {
   // get client id
