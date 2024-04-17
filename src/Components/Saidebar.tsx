@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Settingsicon from "../assets/saidbaricon/Group (1).svg";
 import Encrypted from "../assets/saidbaricon/encrypted-icon (1) 1.svg";
 import employee from "../assets/saidbaricon/business-team-icon 1.svg";
@@ -28,12 +29,13 @@ export default function Saidebar({ handilClose, showSidebar }: SaidebarProps) {
     { id: 9, name: "add employee", href: "/addEmployee", src: users },
     { id: 7, name: "Encryption file", href: "/encryption", src: Encrypted },
     { id: 8, name: "Decrypt file", href: "/Decrypt", src: decimg },
-    { id: 3, name: "Employees", href: "/employee", src: employee },
-    { id: 4, name: " Users", href: "/", src: users },
-    { id: 6, name: " Settings", href: "/", src: Settingsicon },
+    { id: 9, name: "Employees", href: "/employee", src: employee },
+    { id: 10, name: "forginEmployee", href: "/forginEmployee", src: users },
+    { id: 11, name: "recruitment", href: "/recruitment", src: Settingsicon },
+   
   ];
 
-  const { data } = useGetProfileDataQuery();
+  const { data} = useGetProfileDataQuery();
 
   return (
     <div

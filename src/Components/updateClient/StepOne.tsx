@@ -80,7 +80,7 @@ export default function StepOne({
           <button
             type="button"
             onClick={handleOpenDialog}
-            className=" right-[-10px] bottom-[-8px] w-[30px] h-[30px] flex justify-center items-center rounded-full bg-yellowAcc absolute"
+            className=" right-[-10px] top-[-8px] w-[30px] h-[30px] flex justify-center items-center rounded-full bg-yellowAcc absolute"
           >
             <FiEye className="text-white   " />
           </button>

@@ -358,8 +358,7 @@ export default function RecruimentDesc({ search }: { search: string }) {
         </Table>
       </TableContainer>
 
-      {visbleEmployees.filter(item => item.client_order.status == 'approved')
-       .filter((item) => {
+      {visbleEmployees.filter((item) => {
         const name = `${item.first_name} ${item.second_name} ${item.third_name}`
         return search.toLowerCase() === ""
           ? item

@@ -49,7 +49,7 @@ export default function RecruimentDesc({ search }: { search: string }) {
   const [carrentPage, setCarrentPage] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedClient, setSelectedClient] = useState<client | null>(null);
-  const pageSize = 20;
+  const pageSize = 7;
 
 
 
@@ -247,6 +247,20 @@ export default function RecruimentDesc({ search }: { search: string }) {
               text: "Client status updated successfully!",
               icon: "success",
             });
+            const response = await axios.put(
+              `${url}/clientOrder/${id}`,
+              {
+                status: "processing",
+                received_type: receivedType,
+              },
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+                },
+              }
+            );
+
           } else {
             throw new Error("Failed to update client status");
           }
@@ -318,8 +332,7 @@ export default function RecruimentDesc({ search }: { search: string }) {
         </Table>
       </TableContainer>
 
-      {visbleEmployees.filter(item => item.client_order.status == 'approved')
-       .filter((item) => {
+      {visbleEmployees.filter((item) => {
         const name = `${item.first_name} ${item.second_name} ${item.third_name}`
         return search.toLowerCase() === ""
           ? item
@@ -362,7 +375,7 @@ export default function RecruimentDesc({ search }: { search: string }) {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            // value={user.client_order.status}
+            value={user.client_order.status}
             onChange={(event) => handilChange(event ,user.id)}
             className="h-[30px] focus:outline-none"
           >
@@ -395,7 +408,7 @@ export default function RecruimentDesc({ search }: { search: string }) {
                 View details
               </button>
 
-              <Link to={`/updateClient/{user.id}`} className="mr-3 lg:block hidden ">
+              <Link to={`/updateClient/${user.id}`} className="mr-3 lg:block hidden ">
                 <img src={icon1} />
               </Link>
               <button

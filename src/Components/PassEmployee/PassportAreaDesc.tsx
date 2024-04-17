@@ -262,20 +262,20 @@ export default function PassportAreaDesc({ search }: { search: string }) {
               icon: "success",
             });
 
-            // 
-        //     const response = await axios.put(
-        //       `${url}/clientOrder/${id}`,
-        //       {
-        //         status: "processing",
-        //         received_type: receivedType,
-        //       },
-        //       {
-        //         headers: {
-        //           "Content-Type": "application/json",
-        //           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-        //         },
-        //       }
-        //     );
+            
+            const response = await axios.put(
+              `${url}/clientOrder/${id}`,
+              {
+                status: "processing",
+                received_type: receivedType,
+              },
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+                },
+              }
+            );
         //  console.log(response);
          
           } else {
