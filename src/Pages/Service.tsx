@@ -3,7 +3,7 @@ import img from "../assets/landingPage/elaosboa79384 2.svg";
 import secImg from "../assets/landingPage/securty.svg";
 import icon2 from "../assets/landingPage/Group56.svg";
 import icon from "../assets/landingPage/Group55.svg";
-import Footer from "../Components/Footer";
+import Footer from "../Components/landingPage/Footer";
 export default function Service() {
   return (
     <div>

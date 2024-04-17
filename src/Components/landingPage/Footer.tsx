@@ -1,4 +1,4 @@
-import icon from "../assets/landingPage/Group (1).svg";
+import icon from "../../assets/landingPage/Group (1).svg";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import { Link } from "react-router-dom";

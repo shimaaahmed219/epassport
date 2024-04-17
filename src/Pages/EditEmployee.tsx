@@ -1,6 +1,6 @@
 
 
-import EditEmpForm from '../Components/EditEmpForm'
+import EditEmpForm from '../Components/UpdateEmployee/EditEmpForm'
 import FexidSidebar from '../Components/FexidSidebar'
 import Nav from '../Components/Nav'
 

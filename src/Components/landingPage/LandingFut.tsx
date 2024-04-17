@@ -1,6 +1,6 @@
-import encIcon from "../assets/landingPage/Group 2530.svg";
-import setIcon from "../assets/landingPage/Group 2530 (1).svg";
-import decIcon from "../assets/landingPage/Group 2530 (2).svg";
+import encIcon from "../../assets/landingPage/Group 2530.svg";
+import setIcon from "../../assets/landingPage/Group 2530 (1).svg";
+import decIcon from "../../assets/landingPage/Group 2530 (2).svg";
 export default function LandingFut() {
   return (
 

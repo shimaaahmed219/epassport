@@ -1,3 +1,4 @@
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Table,
@@ -16,6 +17,7 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
+
 import icon1 from "../../assets/employee/edit.svg";
 import icon2 from "../../assets/employee/shape (4).svg";
 import { useEffect, useState } from "react";
@@ -24,13 +26,16 @@ import axios from "axios";
 import ReactPaginate from "react-paginate";
 import last from "../../assets/employee/Last.svg";
 import first from "../../assets/employee/First.svg";
-import ".././style/style.css";
-import { client, dataColum } from "../../type";
+import "../style/style.css";
 import { Link } from "react-router-dom";
-// import { useDeleteClientMutation } from "../rtk/api/apiSlice";
+import { client } from "../../type";
 import Swal from "sweetalert2";
+type data = {
+  id: string;
+  name: string;
+};
 
-const colum: dataColum[] = [
+const colum: data[] = [
   { id: "name", name: "Name" },
   { id: "National_ID", name: "National ID" },
   { id: "Request_date", name: "Request date" },
@@ -38,18 +43,18 @@ const colum: dataColum[] = [
   { id: " Options", name: " Options" },
 ];
 
-export default function PassportAreaDesc({ search }: { search: string }) {
+
+
+export default function RecruimentDesc({ search }: { search: string }) {
   const [cleint, setClient] = useState<client[]>([]);
   const [carrentPage, setCarrentPage] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedClient, setSelectedClient] = useState<client | null>(null);
   const pageSize = 7;
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const handlePageChange = ({ selected }: { selected: number }) => {
-  //   setCurrentPage(selected);
-  // };
 
+
+  
   const handleOpenModal = (client: client) => {
     setSelectedClient(client);
     setModalOpen(true);
@@ -58,12 +63,12 @@ export default function PassportAreaDesc({ search }: { search: string }) {
   const handleCloseModal = () => {
     setModalOpen(false);
     setSelectedClient(null);
-  };
-
-  // get client
+  };  
+  
+  // fetchData
   useEffect(() => {
     axios
-      .get(`${url}/client?type=passport authority`, {
+      .get(`${url}/client?type=mofa`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -71,65 +76,68 @@ export default function PassportAreaDesc({ search }: { search: string }) {
       })
       .then((res) => {
         setClient(res.data.data);
-        // setSelectedClient(res.data.dats)
-        console.log(res);
       });
   }, []);
-
-  // pagination
+  console.log(cleint);
   const HandilPageChange = ({ selected }: { selected: number }) => {
     setCarrentPage(selected);
   };
+ 
   const startIndex = carrentPage * pageSize;
   const visbleEmployees = cleint
     .slice(startIndex, startIndex + pageSize)
-    .sort((a, b) => a.first_name.localeCompare(b.first_name));
+    .sort((a, b) =>` ${a.first_name} ${a.second_name} ${a.third_name}`.localeCompare(` ${b.first_name} ${b.second_name} ${b.third_name}`));
 
-  // delet client
-  const handilDeletClient = (id: number) => {
-    // checked delete
-    Swal.fire({
-      title: "are you sure?",
-      text: "You will not be able to undo this action!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#324134",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "delete",
-      cancelButtonText: "cancel",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axios
-          .delete(`${url}/client/${id}`, {
-            headers: {
-              Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-            },
-          })
-          // deleted
-          .then((res) => {
-            setClient((prev) => prev.filter((client) => client.id !== id));
-            console.log(res);
-            Swal.fire(
-              "Deleted!",
-              "Client has been deleted successfully.",
-              "success"
-            );
-          })
-          // error messge
-          .catch((error) => {
-            console.error("Error deleting employee", error);
-            Swal.fire(
-              "Error",
-              "An error occurred while trying to delete the employee.",
-              "error"
-            );
-          });
-      }
-    });
-  };
+    const handilDeletClient = (id: number) => {
+      // checked delete
+      Swal.fire({
+        title: "are you sure?",
+        text: "You will not be able to undo this action!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#324134",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "delete",
+        cancelButtonText: "cancel",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .delete(`${url}/client/${id}`, {
+              headers: {
+                Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+              },
+            })
+            // deleted
+            .then((res) => {
+              setClient((prev) => prev.filter((client) => client.id !== id));
+               
+              console.log(res);
+              Swal.fire(
+                "Deleted!",
+                "Client has been deleted successfully.",
+                "success"
+              );
+            })
+            // error messge
+            .catch((error) => {
+              console.error("Error deleting employee", error);
+              Swal.fire(
+                "Error",
+                "An error occurred while trying to delete the employee.",
+                "error"
+              );
+            });
+        }
+      });
+    };
 
-  const handilChange = async (event: any, id: number) => {
-    try {
+
+    // handil status
+    const handilChange = async (
+      event: any,
+      id: number
+    ) => {
+     try {
       const selectedValue = event.target.value;
       let rejectReasonManual = "";
 
@@ -326,9 +334,8 @@ export default function PassportAreaDesc({ search }: { search: string }) {
     const res = await axios.get(`${url}/client`);
     setClient(res.data.data);
   };
-
   return (
-    <div className="w-[80%]  m-auto my-10">
+    <div className="w-5/6  m-auto my-10">
       <TableContainer
         component={Paper}
         className="shadow-employee   rounded-[14px]"
@@ -351,17 +358,16 @@ export default function PassportAreaDesc({ search }: { search: string }) {
         </Table>
       </TableContainer>
 
-      {visbleEmployees
+      {visbleEmployees.filter(item => item.client_order.status == 'approved')
+       .filter((item) => {
+        const name = `${item.first_name} ${item.second_name} ${item.third_name}`
+        return search.toLowerCase() === ""
+          ? item
+          : item.first_name.toLowerCase().includes(search) || item.second_name.toLowerCase().includes(search)||item.third_name.toLowerCase().includes(search)||name.toLowerCase().includes(search)
 
-        .filter((item) => {
-          const name = `${item.first_name} ${item.second_name} ${item.third_name} `;
-          return search.toLowerCase() === ""
-            ? item
-            : item.first_name.toLowerCase().includes(search) ||
-                item.second_name.toLowerCase().includes(search) ||
-                item.third_name.toLowerCase().includes(search) ||
-                name;
-        })
+          
+      })
+
         .map((user, index) => (
           <div
             key={user.id}
@@ -372,7 +378,7 @@ export default function PassportAreaDesc({ search }: { search: string }) {
                 {index + 1} -
               </span>
               <img
-                className="w-[50px] h-[50px] rounded-full"
+              className="w-[40px] h-[40px] rounded-full"
                 src={`https://epassport-api.preview-ym.com/${user?.photo}`}
               />
               <span className="font-roboto flex  mt-1 xl:text-[15px] text-[15px]  text-greenD mx-3 capitalize">
@@ -386,57 +392,50 @@ export default function PassportAreaDesc({ search }: { search: string }) {
             <div className="xl:text-[20px]  text-[15px]  w-[130px] text-greenD ml-[80px] ">
               {user.updated_at.substring(0, 10)}
             </div>
+           
             <div className="xl:text-[20px] w-[150px] text-center text-[15px]  text-greenD ml-[40px]">
-              {/* status */}
-              <FormControl fullWidth>
-                <InputLabel
-                  id="demo-simple-select-label"
-                  className="mt-[-10px]"
-                >
-                  status
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={user.client_order.status}
-                  onChange={(event) => handilChange(event, user.id)}
-                  className="h-[30px] focus:outline-none"
-                >
-                  <MenuItem value={"approved"}>
-                    <div className="flex items-center">
-                      <span className="px-2 py-2 rounded-full bg-approved mr-1"></span>
-                      <span>approved</span>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value={"rejected"}>
-                    <div className="flex items-center">
-                      <span className="px-2 py-2 rounded-full bg-rejected mr-1"></span>
-                      <span>rejected</span>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value={"processing"}>
-                    <div className="flex items-center">
-                      <span className="px-2 py-2 rounded-full bg-pending mr-1"></span>
-                      <span>pending</span>
-                    </div>
-                  </MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-
-            {/* details */}
+        {/* status */}
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label" className="mt-[-10px]">
+            status
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={user.client_order.status}
+            onChange={(event) => handilChange(event ,user.id)}
+            className="h-[30px] focus:outline-none"
+          >
+            <MenuItem value={"approved"}>
+              <div className="flex items-center">
+                <span className="px-2 py-2 rounded-full bg-approved mr-1"></span>
+                <span>approved</span>
+              </div>
+            </MenuItem>
+            <MenuItem value={"rejected"}>
+              <div className="flex items-center">
+                <span className="px-2 py-2 rounded-full bg-rejected mr-1"></span>
+                <span>rejected</span>
+              </div>
+            </MenuItem>
+            <MenuItem value={"processing"}>
+              <div className="flex items-center">
+                <span className="px-2 py-2 rounded-full bg-pending mr-1"></span>
+                <span>pending</span>
+              </div>
+            </MenuItem>
+          </Select>
+        </FormControl>
+      </div>
             <div className=" flex gap-x-3 items-center  lg:ms-auto ">
-              <button
+            <button
                 onClick={() => handleOpenModal(user)}
                 className="text-[16px] font-normal text-white bg-yellowAcc h-[34px] w-[140px] rounded-[25px] flex items-center justify-center"
               >
-                View detail
+                View details
               </button>
 
-              <Link
-                to={`/updateClient/${user.id}`}
-                className="mr-3 lg:block hidden "
-              >
+              <Link to={`/updateClient/{user.id}`} className="mr-3 lg:block hidden ">
                 <img src={icon1} />
               </Link>
               <button
@@ -468,24 +467,14 @@ export default function PassportAreaDesc({ search }: { search: string }) {
         />
       </div>
       <Dialog open={modalOpen} onClose={handleCloseModal}>
-        <DialogTitle
-          style={{ fontFamily: "roboto", color: "green", fontSize: "25px" }}
-        >
-          Request Details
-        </DialogTitle>
+        <DialogTitle style={{color:"green"}}>Request Details</DialogTitle>
         <DialogContent>
           {/* Display request status and reason for rejection */}
           {selectedClient && (
             <>
-              <p style={{ fontFamily: "roboto", fontWeight: "bold" }}>
-                {" "}
-                Request Status: {selectedClient.client_order.status}
-              </p>
+              <p style={{fontFamily:"Roboto",fontWeight:"bold"}}>Request Status: {selectedClient.client_order.status}</p>
               {selectedClient.client_order.status === "rejected" && (
-                <p style={{ fontFamily: "roboto", fontWeight: "bold" }}>
-                  Reason for Rejection:{" "}
-                  {selectedClient.client_order.reject_reason}
-                </p>
+                <p style={{fontFamily:"Roboto",fontWeight:"bold"}}>Reason for Rejection: {selectedClient.client_order.reject_reason}</p>
               )}
             </>
           )}

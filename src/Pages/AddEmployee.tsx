@@ -1,5 +1,5 @@
 
-import AddEmpForm from '../Components/AddEmpForm'
+import AddEmpForm from '../Components/AddEmployee/AddEmpForm'
 
 import Nav from '../Components/Nav'
 import FexidSidebar from '../Components/FexidSidebar'

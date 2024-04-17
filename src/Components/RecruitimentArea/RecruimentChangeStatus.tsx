@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 import Swal from "sweetalert2";
 
-import { url } from "./URL";
+import { url } from "../URL";
 
 
 interface User {
@@ -100,7 +100,8 @@ export default function RecruimentChangeStatus({
           } else if (selectedValue === "approved") {
             // Set received_type automatically to "mofa"
             const receivedType = "mofa";
-      
+            setClient((prev)=>prev.filter((client)=>client.id !== id))
+
             const response = await axios.put(
               `${url}/clientOrder/${id}`,
               {
@@ -112,6 +113,7 @@ export default function RecruimentChangeStatus({
                   "Content-Type": "application/json",
                   Authorization: `Bearer ${window.localStorage.getItem("token")}`,
                 },
+             
               }
             );
       
@@ -178,6 +180,8 @@ export default function RecruimentChangeStatus({
             icon: "error",
           });
         }
+        const res = await axios.get(`${url}/client`)
+      
       };
       
   return (

@@ -5,7 +5,7 @@ import img2 from "../assets/landingPage/standard-quality-control-collage-concept
 import encIcon from "../assets/EncAndEecICONS/Vector (1).svg";
 import decIcon from "../assets/EncAndEecICONS/Group 2288.svg";
 import use from "../assets/landingPage/Vector.svg";
-import Footer from "../Components/Footer";
+import Footer from "../Components/landingPage/Footer";
 
 export default function About() {
   const technology = [

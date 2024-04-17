@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
-import icon from "../assets/landingPage/Group (1).svg";
+import icon from "../../assets/landingPage/Group (1).svg";
 import { useState } from "react";
-import icon2 from "../assets/filters-2.svg";
+import icon2 from "../../assets/filters-2.svg";
 import DropDowenNavv from "./DropDowenNavv";
 import { LoginOutlined } from "@mui/icons-material";
 export default function NavLandingPage() {

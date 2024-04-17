@@ -1,12 +1,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
-import { url } from "./URL";
+import { url } from "../URL";
 import axios from "axios";
 import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
-type schema = z.infer<typeof schema>;
+
 const schema = z.object({
   current_password: z
     .string()
@@ -29,16 +29,17 @@ const schema = z.object({
     }),
   new_password_confirmation: z.string().refine(
     (data) => {
-      return data === undefined || data === "" || data === new_password;
+      return data === undefined || data === "" || data !== data.new_password;
     },
     {
       message: "New Password Confirmation must match New Password",
     }
   ),
 });
+type schema = z.infer<typeof schema>;
 export default function ChangePassword() {
   const [showPassword, setShowPassword] = useState(false);
-
+  
   const {
     register,
     handleSubmit,

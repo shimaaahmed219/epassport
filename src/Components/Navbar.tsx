@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import icon from "../assets/landingPage/Group (1).svg";
 import { useState } from "react";
 import icon2 from "../assets/filters-2.svg";
-import DropDowenNavv from "./DropDowenNavv";
+import DropDowenNavv from "./landingPage/DropDowenNavv";
 import { LoginOutlined } from "@mui/icons-material";
 export default function Navbar() {
   // import {log} from '@mui/icons-material'

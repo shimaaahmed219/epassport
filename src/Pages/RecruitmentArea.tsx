@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Hr from "../Components/Hr";
 import Nav from "../Components/Nav";
-import RecruimentDesc from "../Components/RecruimentDesc";
+import RecruimentDesc from "../Components/RecruitimentArea/RecruimentDesc";
 import searchicon from "../assets/employee/shape (3).svg";
 
 export default function RecruitmentArea() {

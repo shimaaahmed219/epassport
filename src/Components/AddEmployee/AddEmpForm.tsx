@@ -1,9 +1,9 @@
 import { useForm, FieldValues } from "react-hook-form";
-import icon from "../assets/AddEmployee/edit-2.svg";
+import icon from "../../assets/AddEmployee/edit-2.svg";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { url } from "./URL";
+import { url } from "../URL";
 import Swal from "sweetalert2";
 
 

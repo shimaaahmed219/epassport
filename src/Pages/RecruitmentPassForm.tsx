@@ -1,7 +1,7 @@
 
 import Hr from "../Components/Hr";
 import Nav from "../Components/Nav";
-import NewForm from "../Components/NewForm";
+import NewForm from "../Components/passform/NewForm";
 
 
 export default function RecruitmentPassForm() {

@@ -39,13 +39,11 @@ function App() {
           <Route path="/Encryption" element={<Encryption />} />
           <Route path="/tryagain" element={<TryAgain />} />
           <Route path="/dashboard" element={<DashbordEmployee />} />
-          <Route path="/recruitment" element={<RecruitmentArea />} />
           <Route path="/passForm" element={<RecruitmentPassForm />} />
           <Route path="/PassEmployee" element={<PassEmployee />} />
           <Route path="/forginEmployee" element={<ForeignEmployee />} />
-          <Route path="/forginEmployee" element={<ForeignEmployee />} />
+          <Route path="/recruitment" element={<RecruitmentArea />} />
           <Route path="/updateClient/:id" element={<UpdateClientData/>} />
-          {/* <Route path="/viewDetails/:id" element={<ClientDetails/>} /> */}
           <Route path="*" element={<div>not found</div>} />
         </Routes>
       </BrowserRouter>

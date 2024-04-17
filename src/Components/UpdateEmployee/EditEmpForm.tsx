@@ -1,4 +1,4 @@
-import { url } from "./URL";
+import { url } from "../URL";
 import { useParams } from "react-router-dom";
 import { useForm, FieldValues } from "react-hook-form";
 import { z } from "zod";
@@ -70,7 +70,7 @@ export default function EditEmpForm() {
         setemployeeData(res.data.data);
         Object.keys(res.data.data).forEach((key) => {
           setValue(key, res.data.data[key]);
-          // console.log(res.data.data);
+          console.log(res.data.data);
         });
       });
   }, [id]);

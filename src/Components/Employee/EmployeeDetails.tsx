@@ -9,15 +9,15 @@ import {
   Checkbox,
   Switch,
 } from "@mui/material";
-import icon1 from "../assets/employee/edit.svg";
-import icon2 from "../assets/employee/shape (4).svg";
+import icon1 from "../../assets/employee/edit.svg";
+import icon2 from "../../assets/employee/shape (4).svg";
 import { useEffect, useState } from "react";
-import { url } from "./URL";
+import { url } from "../URL";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
-import last from "../assets/employee/Last.svg";
-import first from "../assets/employee/First.svg";
-import "./style/style.css";
+import last from "../../assets/employee/Last.svg";
+import first from "../../assets/employee/First.svg";
+import "../style/style.css";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 

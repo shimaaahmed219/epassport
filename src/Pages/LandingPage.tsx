@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
-import NavLandingPage from "../Components/NavLandingPage";
+import NavLandingPage from "../Components/landingPage/NavLandingPage";
 import "./style/landingPage.css";
 import star from "../assets/landingPage/star.svg";
 import smallStar from "../assets/landingPage/Vector2.svg";
-import LandingSvg from "../Components/svg/LandingSvg";
-import LandingPolygon from "../Components/svg/LandingPolygon";
-import LandingFut from "../Components/LandingFut";
+import LandingSvg from "../Components/landingPage/svg/LandingSvg";
+import LandingPolygon from "../Components/landingPage/svg/LandingPolygon";
+import LandingFut from "../Components/landingPage/LandingFut";
 import employee from "../assets/landingPage/work.png";
 import tru from "../assets/landingPage/true.svg";
 import mob from "../assets/landingPage/mob.svg";
 import g4 from "../assets/landingPage/G4.svg";
 import t from "../assets/landingPage/t.svg";
 import img from "../assets/landingPage/Group.svg";
-import Title from "../Components/Title";
-import Footer from "../Components/Footer";
+import Title from "../Components/landingPage/Title";
+import Footer from "../Components/landingPage/Footer";
 
 export default function LandingPage() {
   return (

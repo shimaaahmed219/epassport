@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
-import img from "../assets/passForm/Group.svg";
-import uploadImg from "../assets/passForm/upload.svg";
-import HeaderFormPage from "../Components/HeaderFormPage";
-import upload from "../assets/passForm/uploadfile.svg";
-import CheckboxInput from "../Components/CheckboxInput";
-import Hr from "../Components/Hr";
+import img from "../../assets/passForm/Group.svg";
+import uploadImg from "../../assets/passForm/upload.svg";
+import HeaderFormPage from "../HeaderFormPage";
+import upload from "../../assets/passForm/uploadfile.svg";
+import CheckboxInput from "../CheckboxInput";
+import Hr from "../Hr";
 import axios from "axios";
-import { url } from "../Components/URL";
+import { url } from "../URL";
 import {
   FormControlLabel,
   Box,
@@ -16,7 +16,7 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import PresonalFormArabic from "./PresonalFormArabic";
+// import PresonalFormArabic from "./PresonalFormArabic";
 
 export default function NewForm() {
   const [step, setStep] = useState(1);

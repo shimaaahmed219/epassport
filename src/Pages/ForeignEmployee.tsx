@@ -2,7 +2,7 @@ import { useState } from "react";
 import Hr from "../Components/Hr";
 import Nav from "../Components/Nav";
 import searchicon from '../assets/employee/shape (3).svg'
-import ForginDesc from "../Components/ForginDesc";
+import ForginDesc from "../Components/ForeignEmloyee/ForginDesc";
 
 export default function ForeignEmployee() {
     

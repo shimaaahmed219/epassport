@@ -1,7 +1,7 @@
 
 
 import { useState } from 'react'
-import EmployeeDetails from '../Components/EmployeeDetails'
+import EmployeeDetails from '../Components/Employee/EmployeeDetails'
 import Nav from '../Components/Nav'
 import icon from '../assets/employee/business-team-icon 1.svg'
 import searchicon from '../assets/employee/shape (3).svg'

@@ -2,7 +2,7 @@
 import Nav from '../Components/Nav'
 
 
-import EditEmpForm from '../Components/EditEmpForm';
+import EditEmpForm from '../Components/UpdateEmployee/EditEmpForm';
 import FexidSidebar from '../Components/FexidSidebar';
 
 export default function EditeProfile() {
